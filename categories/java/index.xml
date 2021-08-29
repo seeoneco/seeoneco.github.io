@@ -1,0 +1,66 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Java - 分类 - Lone&#39;s Blog</title>
+        <link>http://example.org/categories/java/</link>
+        <description>Java - 分类 - Lone&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chonee@qq.com (Lone)</managingEditor>
+            <webMaster>chonee@qq.com (Lone)</webMaster><lastBuildDate>Sun, 29 Aug 2021 01:20:05 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/java/" rel="self" type="application/rss+xml" /><item>
+    <title>实习总结</title>
+    <link>http://example.org/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Sun, 29 Aug 2021 01:20:05 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[Ⅰ · 序 从兴奋到焦虑，到复杂，到麻木，到迷茫，纷至沓来。 业务需求逻辑看不懂，后端框架接口流程不熟悉，SQL写不好，VUE组件传值不明白，在隔壁]]></description>
+</item><item>
+    <title>SSM-框架整合全记录</title>
+    <link>http://example.org/ssm-%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%85%A8%E8%AE%B0%E5%BD%95/</link>
+    <pubDate>Mon, 26 Jul 2021 00:42:28 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/ssm-%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%85%A8%E8%AE%B0%E5%BD%95/</guid>
+    <description><![CDATA[SSM-框架整合全记录 此篇文章主要为了记录 SSM 框架的学习过程，方便以后查阅复习 关于SSM 顾名思义，Spring + SpringMVC +Mybatis 整合在一起就是SSM了。说]]></description>
+</item><item>
+    <title>Java琐碎闲谈录</title>
+    <link>http://example.org/java%E7%90%90%E7%A2%8E%E9%97%B2%E8%B0%88%E5%BD%95/</link>
+    <pubDate>Thu, 24 Jun 2021 09:31:44 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/java%E7%90%90%E7%A2%8E%E9%97%B2%E8%B0%88%E5%BD%95/</guid>
+    <description><![CDATA[琐碎闲谈录: 记录一些零零散散，日常遇到的一些问题和知识点。 关于构造函数 在 Idea 中，如果有一个类，类中定义了几个属性，那么想要生成构造函数太简单了]]></description>
+</item><item>
+    <title>Spring5 学习笔记</title>
+    <link>http://example.org/spring5-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+    <pubDate>Sun, 20 Jun 2021 11:08:20 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/spring5-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+    <description><![CDATA[Spring 简介 Spring ——&gt; 春天，为开源软件带来了春天 2002，首次推出了Spring框架的雏形：interface21框架！ Spring框架以in]]></description>
+</item><item>
+    <title>MyBatis的一对多，多对一查询</title>
+    <link>http://example.org/mybatis%E7%9A%84%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%A4%9A%E5%AF%B9%E4%B8%80%E6%9F%A5%E8%AF%A2/</link>
+    <pubDate>Thu, 13 May 2021 20:37:35 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/mybatis%E7%9A%84%E4%B8%80%E5%AF%B9%E5%A4%9A%E5%A4%9A%E5%AF%B9%E4%B8%80%E6%9F%A5%E8%AF%A2/</guid>
+    <description><![CDATA[数据表 现在有两张表，分别是Student和Teacher。两张表的id均为主键，而Student表中的tid为外键关联到了Teacher表的]]></description>
+</item><item>
+    <title>Mybatis笔记</title>
+    <link>http://example.org/mybatis%E7%AC%94%E8%AE%B0/</link>
+    <pubDate>Wed, 28 Apr 2021 14:29:27 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/mybatis%E7%AC%94%E8%AE%B0/</guid>
+    <description><![CDATA[Mybatis-9.28 环境： JDK1.8 Mysql 5.7 maven 3.6.1 IDEA 回顾： JDBC Mysql Java基础 Maven Junit SSM框架：配置文件的。 最好的方式：看官网文档； 1、简介 1.1、什么是Mybatis MyBatis 是一款优]]></description>
+</item><item>
+    <title>MyBatis配置踩坑记</title>
+    <link>http://example.org/mybatis%E9%85%8D%E7%BD%AE%E8%B8%A9%E5%9D%91%E8%AE%B0/</link>
+    <pubDate>Fri, 23 Apr 2021 19:35:32 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/mybatis%E9%85%8D%E7%BD%AE%E8%B8%A9%E5%9D%91%E8%AE%B0/</guid>
+    <description><![CDATA[记录一下初学MyBatis的踩坑过程。。。。 鬼知道我经历了多少次绝望。。。调试了快三天，终于搞定了第一个MyBatis程序，都是配置惹的祸。]]></description>
+</item><item>
+    <title>Java之反射</title>
+    <link>http://example.org/java%E4%B9%8B%E5%8F%8D%E5%B0%84/</link>
+    <pubDate>Wed, 24 Mar 2021 17:13:13 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/java%E4%B9%8B%E5%8F%8D%E5%B0%84/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="https://gitee.com/lonercci/picbed/raw/master/img/20210206010602.jpg" referrerpolicy="no-referrer">
+            </div>本文转载自https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html]]></description>
+</item></channel>
+</rss>

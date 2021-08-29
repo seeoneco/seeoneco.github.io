@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>diary - 标签 - Lone&#39;s Blog</title>
+        <link>http://example.org/tags/diary/</link>
+        <description>diary - 标签 - Lone&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chonee@qq.com (Lone)</managingEditor>
+            <webMaster>chonee@qq.com (Lone)</webMaster><lastBuildDate>Mon, 30 Nov 2020 00:01:22 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/diary/" rel="self" type="application/rss+xml" /><item>
+    <title>Last month</title>
+    <link>http://example.org/last-month/</link>
+    <pubDate>Mon, 30 Nov 2020 00:01:22 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/last-month/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="https://gitee.com/lonercci/picbed/raw/master/img/20201221221350.jpg" referrerpolicy="no-referrer">
+            </div>今天是30号，还有一个月就到2020年的年底了。这是个特殊而难忘的一年，疫情，战火，党争，世界各地都焦头烂额。 下半年几乎都在学校，经历了起起]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>SSM - 标签 - Lone&#39;s Blog</title>
+        <link>http://example.org/tags/ssm/</link>
+        <description>SSM - 标签 - Lone&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chonee@qq.com (Lone)</managingEditor>
+            <webMaster>chonee@qq.com (Lone)</webMaster><lastBuildDate>Mon, 26 Jul 2021 00:42:28 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/ssm/" rel="self" type="application/rss+xml" /><item>
+    <title>SSM-框架整合全记录</title>
+    <link>http://example.org/ssm-%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%85%A8%E8%AE%B0%E5%BD%95/</link>
+    <pubDate>Mon, 26 Jul 2021 00:42:28 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/ssm-%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88%E5%85%A8%E8%AE%B0%E5%BD%95/</guid>
+    <description><![CDATA[SSM-框架整合全记录 此篇文章主要为了记录 SSM 框架的学习过程，方便以后查阅复习 关于SSM 顾名思义，Spring + SpringMVC +Mybatis 整合在一起就是SSM了。说]]></description>
+</item></channel>
+</rss>
