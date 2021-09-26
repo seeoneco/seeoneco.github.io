@@ -24,7 +24,7 @@
 xml 解析、工厂模式、反射
 
 #### IOC原理案例场景
-我们现在试想一个场景，有两个类，分别是`UserService`,`UserDao`。
+我们现在试想一个场景，有两个类，分别是`UserService`,`UserDao`。  
 ![](https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png)  
 如今我们想在`UserService`中调用`UserDao`中的`add`方法，该怎么做呢。
 
