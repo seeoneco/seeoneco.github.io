@@ -25,16 +25,16 @@ xml 解析、工厂模式、反射
 
 #### IOC原理案例场景
 我们现在试想一个场景，有两个类，分别是`UserService`,`UserDao`。
-![](https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png)
+![](https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png)  
 如今我们想在`UserService`中调用`UserDao`中的`add`方法，该怎么做呢。
 
 ##### 原始方法
-使用new关键字新建一个对象实例，这样实例中就可以使用add方法了。但耦合度太高。
+使用new关键字新建一个对象实例，这样实例中就可以使用add方法了。但耦合度太高。  
 ![](https://gitee.com/lonercci/picbed/raw/master/img/202109242209619.png)
 
 ##### 工厂模式
-使用工厂模式，把`UserService`,`UserDao`做到了解耦，但是却和`UserFactory`有了耦合度。
-![](https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png)
+使用工厂模式，把`UserService`,`UserDao`做到了解耦，但是却和`UserFactory`有了耦合度。  
+![](https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png)  
 实际上，我们会发现不管怎么设计，都会存在一定的耦合度。因此，我们需要做的就是怎么把耦合度降到最低。
 
 ##### IOC模式（使用xml文件解析+反射）
@@ -63,12 +63,12 @@ Spring 提供 IOC 容器实现的两种方式：
     IOC 容器基本实现，是 Spring 内部的使用接口，不提供开发人员进行使用。 **加载配置文件时候不会创建对象，在获取对象（使用）才去创建对象**
 2. ApplicationContext
     是BeanFactory 接口的子接口，提供更多更强大的功能，一般由开发人
-    员进行使用。没错，这个就是我们经常在写测试类的时候使用的的那个接口。**加载配置文件时候就会把在配置文件对象进行创建**
-    ![](https://gitee.com/lonercci/picbed/raw/master/img/202109251524576.png)
+    员进行使用。没错，这个就是我们经常在写测试类的时候使用的的那个接口。**加载配置文件时候就会把在配置文件对象进行创建**  
+    ![](https://gitee.com/lonercci/picbed/raw/master/img/202109251524576.png)  
 
 `ApplicationContext` 接口的实现类
-第一个是系统中的绝对路径读取bean.xml，第二个是相对路径（src下的路径）
-![](https://gitee.com/lonercci/picbed/raw/master/img/202109251533024.png)
+第一个是系统中的绝对路径读取bean.xml，第二个是相对路径（src下的路径）  
+![](https://gitee.com/lonercci/picbed/raw/master/img/202109251533024.png)  
 
 ### IOC操作Bean管理
 什么是Bean 管理？Bean 管理是指两个操作：
@@ -86,9 +86,8 @@ Spring 提供 IOC 容器实现的两种方式：
   - class 属性：类全路径（包类路径）
 + 创建对象时候，默认也是执行无参数构造方法完成对象创建
 ##### 基于 xml 方式注入属性
-DI：依赖注入，就是注入属性
-
-![](https://gitee.com/lonercci/picbed/raw/master/img/202109251703463.png)
+DI：依赖注入，就是注入属性  
+![](https://gitee.com/lonercci/picbed/raw/master/img/202109251703463.png)  
 
 + 第一种注入方式：**使用 set 方法进行注入**
 
@@ -332,7 +331,7 @@ bean.xml（内部Bean）
 </bean>
 
 ```
-+ 第二种写法
++ 第二种写法  
 ![](https://gitee.com/lonercci/picbed/raw/master/img/202109252133214.png)
 
 ```xml

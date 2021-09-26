@@ -192,10 +192,10 @@
         data-srcset="https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png, https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png 1.5x, https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png 2x"
         data-sizes="auto"
         alt="https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png"
-        title="https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png" />
+        title="https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png" /><br>
 如今我们想在<code>UserService</code>中调用<code>UserDao</code>中的<code>add</code>方法，该怎么做呢。</p>
 <h5 id="原始方法">原始方法</h5>
-<p>使用new关键字新建一个对象实例，这样实例中就可以使用add方法了。但耦合度太高。
+<p>使用new关键字新建一个对象实例，这样实例中就可以使用add方法了。但耦合度太高。<br>
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -205,7 +205,7 @@
         alt="https://gitee.com/lonercci/picbed/raw/master/img/202109242209619.png"
         title="https://gitee.com/lonercci/picbed/raw/master/img/202109242209619.png" /></p>
 <h5 id="工厂模式">工厂模式</h5>
-<p>使用工厂模式，把<code>UserService</code>,<code>UserDao</code>做到了解耦，但是却和<code>UserFactory</code>有了耦合度。
+<p>使用工厂模式，把<code>UserService</code>,<code>UserDao</code>做到了解耦，但是却和<code>UserFactory</code>有了耦合度。<br>
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -213,7 +213,7 @@
         data-srcset="https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png, https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png 1.5x, https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png 2x"
         data-sizes="auto"
         alt="https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png"
-        title="https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png" />
+        title="https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png" /><br>
 实际上，我们会发现不管怎么设计，都会存在一定的耦合度。因此，我们需要做的就是怎么把耦合度降到最低。</p>
 <h5 id="ioc模式使用xml文件解析反射">IOC模式（使用xml文件解析+反射）</h5>
 <ul>
@@ -263,7 +263,7 @@ Spring 提供 IOC 容器实现的两种方式：</p>
 IOC 容器基本实现，是 Spring 内部的使用接口，不提供开发人员进行使用。 <strong>加载配置文件时候不会创建对象，在获取对象（使用）才去创建对象</strong></li>
 <li>ApplicationContext
 是BeanFactory 接口的子接口，提供更多更强大的功能，一般由开发人
-员进行使用。没错，这个就是我们经常在写测试类的时候使用的的那个接口。<strong>加载配置文件时候就会把在配置文件对象进行创建</strong>
+员进行使用。没错，这个就是我们经常在写测试类的时候使用的的那个接口。<strong>加载配置文件时候就会把在配置文件对象进行创建</strong><br>
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -274,7 +274,7 @@ IOC 容器基本实现，是 Spring 内部的使用接口，不提供开发人�
         title="https://gitee.com/lonercci/picbed/raw/master/img/202109251524576.png" /></li>
 </ol>
 <p><code>ApplicationContext</code> 接口的实现类
-第一个是系统中的绝对路径读取bean.xml，第二个是相对路径（src下的路径）
+第一个是系统中的绝对路径读取bean.xml，第二个是相对路径（src下的路径）<br>
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -312,8 +312,8 @@ IOC 容器基本实现，是 Spring 内部的使用接口，不提供开发人�
 <li>创建对象时候，默认也是执行无参数构造方法完成对象创建</li>
 </ul>
 <h5 id="基于-xml-方式注入属性">基于 xml 方式注入属性</h5>
-<p>DI：依赖注入，就是注入属性</p>
-<p><img
+<p>DI：依赖注入，就是注入属性<br>
+<img
         class="lazyload"
         src="/svg/loading.min.svg"
         data-src="https://gitee.com/lonercci/picbed/raw/master/img/202109251703463.png"
@@ -817,7 +817,7 @@ UserService：</p>
 </code></pre></td></tr></table>
 </div>
 </div><ul>
-<li>第二种写法
+<li>第二种写法<br>
 <img
         class="lazyload"
         src="/svg/loading.min.svg"
