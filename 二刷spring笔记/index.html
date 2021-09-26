@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>二刷Spring - Lone&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="二刷Spring" />
+<meta property="og:description" content="Spring 5 框架概述 Spring 是轻量级的开源的 JavaEE 框架 Spring 可以解决企业应用开发的复杂性 特点 方便解耦，简化开发 方便解耦，简化开发 方便程序测试 方便和其他框架进行整合" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/%E4%BA%8C%E5%88%B7spring%E7%AC%94%E8%AE%B0/" /><meta property="og:image" content="http://example.org/"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-26T15:42:20+08:00" />
+<meta property="article:modified_time" content="2021-09-26T15:42:20+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/"/>
+
+<meta name="twitter:title" content="二刷Spring"/>
+<meta name="twitter:description" content="Spring 5 框架概述 Spring 是轻量级的开源的 JavaEE 框架 Spring 可以解决企业应用开发的复杂性 特点 方便解耦，简化开发 方便解耦，简化开发 方便程序测试 方便和其他框架进行整合"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="https://gitee.com/lonercci/picbed/raw/master/img/20210626110236.jpg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/%E4%BA%8C%E5%88%B7spring%E7%AC%94%E8%AE%B0/" /><link rel="prev" href="http://example.org/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.a12cacf4b5b41234196cb89042b24a70.css" integrity="md5-oSys9LW0EjQZbLiQQrJKcA=="><link rel="stylesheet" href="/css/style.min.f03a2ec71b16efbe4f24352e542c93a9.css" integrity="md5-8DouxxsW775PJDUuVCyTqQ=="><link rel="stylesheet" href="/lib/fontawesome-free/all.min.26386564b5cf1594be24059af1cd0db9.css" integrity="md5-JjhlZLXPFZS&#43;JAWa8c0NuQ=="><link rel="stylesheet" href="/lib/animate/animate.min.43d6b8fdf324505f0ceb7ea698d0b7a5.css" integrity="md5-Q9a4/fMkUF8M636mmNC3pQ=="><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "二刷Spring",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/%E4%BA%8C%E5%88%B7spring%E7%AC%94%E8%AE%B0\/"
+        },"genre": "posts","keywords": "java, note, Spring","wordcount":  4579 ,
+        "url": "http:\/\/example.org\/%E4%BA%8C%E5%88%B7spring%E7%AC%94%E8%AE%B0\/","datePublished": "2021-09-26T15:42:20+08:00","dateModified": "2021-09-26T15:42:20+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Lone"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Lone&#39;s Blog">Lone&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 全部文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Lone&#39;s Blog">Lone&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">全部文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">二刷Spring</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lone</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/java/"><i class="far fa-folder fa-fw"></i>Java</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-26">2021-09-26</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4579 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 10 分钟&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#spring-5">Spring 5</a>
+      <ul>
+        <li><a href="#框架概述">框架概述</a></li>
+        <li><a href="#ioc概念和原理">IOC概念和原理</a>
+          <ul>
+            <li><a href="#什么是ioc">什么是IOC</a></li>
+            <li><a href="#ioc-底层原理">IOC 底层原理</a></li>
+            <li><a href="#ioc原理案例场景">IOC原理案例场景</a>
+              <ul>
+                <li><a href="#原始方法">原始方法</a></li>
+                <li><a href="#工厂模式">工厂模式</a></li>
+                <li><a href="#ioc模式使用xml文件解析反射">IOC模式（使用xml文件解析+反射）</a></li>
+              </ul>
+            </li>
+            <li><a href="#ioc的一些接口">IOC的一些接口</a></li>
+          </ul>
+        </li>
+        <li><a href="#ioc操作bean管理">IOC操作Bean管理</a>
+          <ul>
+            <li><a href="#bean-管理操作---基于-xml-配置文件方式实现">Bean 管理操作 - 基于 xml 配置文件方式实现</a>
+              <ul>
+                <li><a href="#基于-xml-方式创建对象">基于 xml 方式创建对象</a></li>
+                <li><a href="#基于-xml-方式注入属性">基于 xml 方式注入属性</a></li>
+                <li><a href="#xml注入其他类型属性">xml注入其他类型属性</a></li>
+                <li><a href="#xml-注入集合属性">xml 注入集合属性</a></li>
+                <li><a href="#xml-注入集合---在集合里面设置对象类型值">xml 注入集合 - (在集合里面设置对象类型值)</a></li>
+                <li><a href="#xml-注入集合---把集合注入部分提取出来">xml 注入集合 - (把集合注入部分提取出来)</a></li>
+                <li><a href="#factorybean">FactoryBean</a></li>
+                <li><a href="#bean-作用域">bean 作用域</a></li>
+                <li><a href="#bean-生命周期">bean 生命周期</a></li>
+                <li><a href="#xml-自动装配">xml 自动装配</a></li>
+              </ul>
+            </li>
+            <li><a href="#bean-管理操作---基于注解方式实现">Bean 管理操作 - 基于注解方式实现</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="spring-5">Spring 5</h2>
+<h3 id="框架概述">框架概述</h3>
+<ol>
+<li>Spring 是轻量级的开源的 JavaEE 框架</li>
+<li>Spring 可以解决企业应用开发的复杂性</li>
+<li>特点
+<ul>
+<li>方便解耦，简化开发</li>
+<li>方便解耦，简化开发</li>
+<li>方便程序测试</li>
+<li>方便和其他框架进行整合</li>
+<li>方便进行事务操作</li>
+<li>降低 API 开发难度</li>
+</ul>
+</li>
+<li><strong>核心：IOC，AOP</strong>
+<ul>
+<li>IOC：控制反转，把创建对象过程交给 Spring 进行管理</li>
+<li>Aop：面向切面，不修改源代码进行功能增强</li>
+</ul>
+</li>
+</ol>
+<h3 id="ioc概念和原理">IOC概念和原理</h3>
+<h4 id="什么是ioc">什么是IOC</h4>
+<ul>
+<li>控制反转，把对象创建和对象之间的调用过程，交给 Spring 进行管理.</li>
+<li>使用 IOC 目的：为了耦合度降低</li>
+</ul>
+<h4 id="ioc-底层原理">IOC 底层原理</h4>
+<p>xml 解析、工厂模式、反射</p>
+<h4 id="ioc原理案例场景">IOC原理案例场景</h4>
+<p>我们现在试想一个场景，有两个类，分别是<code>UserService</code>,<code>UserDao</code>。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png"
+        data-srcset="https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png, https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png 1.5x, https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png"
+        title="https://gitee.com/lonercci/picbed/raw/master/img/202109242200727.png" />
+如今我们想在<code>UserService</code>中调用<code>UserDao</code>中的<code>add</code>方法，该怎么做呢。</p>
+<h5 id="原始方法">原始方法</h5>
+<p>使用new关键字新建一个对象实例，这样实例中就可以使用add方法了。但耦合度太高。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/lonercci/picbed/raw/master/img/202109242209619.png"
+        data-srcset="https://gitee.com/lonercci/picbed/raw/master/img/202109242209619.png, https://gitee.com/lonercci/picbed/raw/master/img/202109242209619.png 1.5x, https://gitee.com/lonercci/picbed/raw/master/img/202109242209619.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/lonercci/picbed/raw/master/img/202109242209619.png"
+        title="https://gitee.com/lonercci/picbed/raw/master/img/202109242209619.png" /></p>
+<h5 id="工厂模式">工厂模式</h5>
+<p>使用工厂模式，把<code>UserService</code>,<code>UserDao</code>做到了解耦，但是却和<code>UserFactory</code>有了耦合度。
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png"
+        data-srcset="https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png, https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png 1.5x, https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png"
+        title="https://gitee.com/lonercci/picbed/raw/master/img/202109242215073.png" />
+实际上，我们会发现不管怎么设计，都会存在一定的耦合度。因此，我们需要做的就是怎么把耦合度降到最低。</p>
+<h5 id="ioc模式使用xml文件解析反射">IOC模式（使用xml文件解析+反射）</h5>
+<ul>
+<li>第一步：创建xml配置文件，配置创建的对象</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;dao&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.UserDao&#34;</span><span class="nt">&gt;&lt;/bean&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>第二步：有service类和dao类，创建工厂类，以下是用伪代码实现的过程</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserFactory</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">UserDao</span> <span class="nf">getDao</span><span class="o">(){</span>
+        <span class="c1">// 1.xml解析,得到class属性值即全路径+类名
+</span><span class="c1"></span>        <span class="n">String</span> <span class="n">classvalue</span> <span class="o">=</span> <span class="n">class属性值</span><span class="o">;</span>
+        <span class="c1">// 2.通过反射，newInstance方法创建对象
+</span><span class="c1"></span>        <span class="n">Class</span> <span class="n">clazz</span> <span class="o">=</span> <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="n">classvalue</span><span class="o">);</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">UserDao</span><span class="o">)</span> <span class="n">clazz</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我们会发现，这时候我们想要更改路径，只需要更改xml文件即可，对比前2种方法，进一步降低了耦合度。</p>
+<h4 id="ioc的一些接口">IOC的一些接口</h4>
+<p>IOC 思想基于 IOC 容器完成，IOC 容器底层就是对象工厂。
+Spring 提供 IOC 容器实现的两种方式：</p>
+<ol>
+<li>BeanFactory
+IOC 容器基本实现，是 Spring 内部的使用接口，不提供开发人员进行使用。 <strong>加载配置文件时候不会创建对象，在获取对象（使用）才去创建对象</strong></li>
+<li>ApplicationContext
+是BeanFactory 接口的子接口，提供更多更强大的功能，一般由开发人
+员进行使用。没错，这个就是我们经常在写测试类的时候使用的的那个接口。<strong>加载配置文件时候就会把在配置文件对象进行创建</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/lonercci/picbed/raw/master/img/202109251524576.png"
+        data-srcset="https://gitee.com/lonercci/picbed/raw/master/img/202109251524576.png, https://gitee.com/lonercci/picbed/raw/master/img/202109251524576.png 1.5x, https://gitee.com/lonercci/picbed/raw/master/img/202109251524576.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/lonercci/picbed/raw/master/img/202109251524576.png"
+        title="https://gitee.com/lonercci/picbed/raw/master/img/202109251524576.png" /></li>
+</ol>
+<p><code>ApplicationContext</code> 接口的实现类
+第一个是系统中的绝对路径读取bean.xml，第二个是相对路径（src下的路径）
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/lonercci/picbed/raw/master/img/202109251533024.png"
+        data-srcset="https://gitee.com/lonercci/picbed/raw/master/img/202109251533024.png, https://gitee.com/lonercci/picbed/raw/master/img/202109251533024.png 1.5x, https://gitee.com/lonercci/picbed/raw/master/img/202109251533024.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/lonercci/picbed/raw/master/img/202109251533024.png"
+        title="https://gitee.com/lonercci/picbed/raw/master/img/202109251533024.png" /></p>
+<h3 id="ioc操作bean管理">IOC操作Bean管理</h3>
+<p>什么是Bean 管理？Bean 管理是指两个操作：</p>
+<ol>
+<li>Spring 创建对象（xml文件）</li>
+<li>Spirng 注入属性</li>
+</ol>
+<h4 id="bean-管理操作---基于-xml-配置文件方式实现">Bean 管理操作 - 基于 xml 配置文件方式实现</h4>
+<h5 id="基于-xml-方式创建对象">基于 xml 方式创建对象</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--1 配置User对象创建--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;user&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.User&#34;</span><span class="nt">&gt;&lt;/bean&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>在 spring 配置文件中，使用 bean 标签，标签里面添加对应属性，就可以实现对象创建</li>
+<li>在 bean 标签有很多属性，介绍常用的属性
+<ul>
+<li>id 属性：唯一标识</li>
+<li>class 属性：类全路径（包类路径）</li>
+</ul>
+</li>
+<li>创建对象时候，默认也是执行无参数构造方法完成对象创建</li>
+</ul>
+<h5 id="基于-xml-方式注入属性">基于 xml 方式注入属性</h5>
+<p>DI：依赖注入，就是注入属性</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/lonercci/picbed/raw/master/img/202109251703463.png"
+        data-srcset="https://gitee.com/lonercci/picbed/raw/master/img/202109251703463.png, https://gitee.com/lonercci/picbed/raw/master/img/202109251703463.png 1.5x, https://gitee.com/lonercci/picbed/raw/master/img/202109251703463.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/lonercci/picbed/raw/master/img/202109251703463.png"
+        title="https://gitee.com/lonercci/picbed/raw/master/img/202109251703463.png" /></p>
+<ul>
+<li>第一种注入方式：<strong>使用 set 方法进行注入</strong></li>
+</ul>
+<ol>
+<li>创建类，定义属性和对应的 set 方法</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * 演示使用set方法进行注入属性
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Book</span> <span class="o">{</span>
+    <span class="c1">//创建属性
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">bname</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">bauthor</span><span class="o">;</span>
+    <span class="c1">//创建属性对应的set方法
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBname</span><span class="o">(</span><span class="n">String</span> <span class="n">bname</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">bname</span> <span class="o">=</span> <span class="n">bname</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBauthor</span><span class="o">(</span><span class="n">String</span> <span class="n">bauthor</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">bauthor</span> <span class="o">=</span> <span class="n">bauthor</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>在 spring 配置文件配置对象创建，配置属性注入</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--2 set方法注入属性--&gt;</span>
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;book&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.Book&#34;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--使用property完成属性注入
+</span><span class="c">            name：类里面属性名称
+</span><span class="c">            value：向属性注入的值
+</span><span class="c">        --&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;bname&#34;</span> <span class="na">value=</span><span class="s">&#34;Java&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;bauthor&#34;</span> <span class="na">value=</span><span class="s">&#34;Vue&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+   <span class="nt">&lt;/bean&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>第二种注入方式：<strong>使用有参数构造进行注入</strong></li>
+</ul>
+<ol>
+<li>创建类，定义属性，创建属性对应有参数构造方法</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * 使用有参数构造注入
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Orders</span> <span class="o">{</span>
+    <span class="c1">//属性
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">String</span> <span class="n">oname</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">address</span><span class="o">;</span>
+    <span class="c1">//有参数构造
+</span><span class="c1"></span>    <span class="kd">public</span> <span class="nf">Orders</span><span class="o">(</span><span class="n">String</span> <span class="n">oname</span><span class="o">,</span><span class="n">String</span> <span class="n">address</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">oname</span> <span class="o">=</span> <span class="n">oname</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">address</span> <span class="o">=</span> <span class="n">address</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ordersTest</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">oname</span><span class="o">+</span><span class="s">&#34;::&#34;</span><span class="o">+</span><span class="n">address</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>在 spring 配置文件中进行配置</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="o">&lt;!--</span><span class="n">3</span> <span class="n">有参数构造注入属性</span><span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="n">bean</span> <span class="n">id</span><span class="o">=</span><span class="s">&#34;orders&#34;</span> <span class="n">class</span><span class="o">=</span><span class="s">&#34;com.lone.Orders&#34;</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="n">constructor</span><span class="o">-</span><span class="n">arg</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;oname&#34;</span> <span class="n">value</span><span class="o">=</span><span class="s">&#34;电脑&#34;</span><span class="o">&gt;&lt;/</span><span class="n">constructor</span><span class="o">-</span><span class="n">arg</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="n">constructor</span><span class="o">-</span><span class="n">arg</span> <span class="n">name</span><span class="o">=</span><span class="s">&#34;address&#34;</span> <span class="n">value</span><span class="o">=</span><span class="s">&#34;China&#34;</span><span class="o">&gt;&lt;/</span><span class="n">constructor</span><span class="o">-</span><span class="n">arg</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">bean</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>第三种注入方式：<strong>p 名称空间注入</strong>
+使用 p 名称空间注入，可以简化基于 xml 配置方式</li>
+</ul>
+<ol>
+<li>添加 p 名称空间在配置文件中</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>
+       <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+       <span class="na">xmlns:p=</span><span class="s">&#34;http://www.springframework.org/schema/p&#34;</span>
+       <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&#34;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>进行属性注入，在 bean 标签里面进行操作</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="o">&lt;</span><span class="n">bean</span> <span class="n">id</span><span class="o">=</span><span class="s">&#34;book&#34;</span> <span class="n">class</span><span class="o">=</span><span class="s">&#34;com.lone.Book&#34;</span> <span class="n">p</span><span class="o">:</span><span class="n">bname</span><span class="o">=</span><span class="s">&#34;Java&#34;</span> <span class="n">p</span><span class="o">:</span><span class="n">bauthor</span><span class="o">=</span><span class="s">&#34;Lone&#34;</span><span class="o">&gt;&lt;/</span><span class="n">bean</span><span class="o">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="xml注入其他类型属性">xml注入其他类型属性</h5>
+<ol>
+<li>字面量</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--null 值--&gt;</span>
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;address&#34;</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;null/&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>属性值包含特殊符号</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--属性值包含特殊符号
+</span><span class="c"> 1 把&lt;&gt;进行转义 &amp;lt; &amp;gt;
+</span><span class="c"> 2 把带特殊符号内容写到 CDATA
+</span><span class="c">--&gt;</span>
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;address&#34;</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;value&gt;</span><span class="cp">&lt;![CDATA[&lt;&lt;南京&gt;&gt;]]&gt;</span><span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>
+<p>注入属性 - 外部 bean</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/lonercci/picbed/raw/master/img/202109251751812.png"
+        data-srcset="https://gitee.com/lonercci/picbed/raw/master/img/202109251751812.png, https://gitee.com/lonercci/picbed/raw/master/img/202109251751812.png 1.5x, https://gitee.com/lonercci/picbed/raw/master/img/202109251751812.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/lonercci/picbed/raw/master/img/202109251751812.png"
+        title="https://gitee.com/lonercci/picbed/raw/master/img/202109251751812.png" /></p>
+</li>
+<li>
+<p>创建两个类 service 类和 dao 类</p>
+</li>
+<li>
+<p>在 service 调用 dao 里面的方法</p>
+</li>
+<li>
+<p>在 spring 配置文件中进行配置</p>
+</li>
+</ol>
+<p>== 代码部分 ==
+UserService：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserService</span> <span class="o">{</span>
+
+    <span class="c1">//创建UserDao类型属性，生成set方法
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">UserDao</span> <span class="n">userDao</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUserDao</span><span class="o">(</span><span class="n">UserDao</span> <span class="n">userDao</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">userDao</span> <span class="o">=</span> <span class="n">userDao</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;service add...............&#34;</span><span class="o">);</span>
+        <span class="n">userDao</span><span class="o">.</span><span class="na">update</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>UserDao:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserDao</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>UserDaoImpl：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserDaoImpl</span> <span class="kd">implements</span> <span class="n">UserDao</span> <span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;dao update...........&#34;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>bean.xml:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>
+       <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+       <span class="na">xmlns:p=</span><span class="s">&#34;http://www.springframework.org/schema/p&#34;</span>
+       <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&#34;</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!--1 service和dao对象创建--&gt;</span>
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;userService&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.service.UserService&#34;</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!--注入userDao对象
+</span><span class="c">            name属性：类里面属性名称
+</span><span class="c">            ref属性：创建userDao对象bean标签id值
+</span><span class="c">        --&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;userDao&#34;</span> <span class="na">ref=</span><span class="s">&#34;userDaoImpl&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;userDaoImpl&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.dao.UserDaoImpl&#34;</span><span class="nt">&gt;&lt;/bean&gt;</span>
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>注入属性-内部 bean（举例）</li>
+</ol>
+<ul>
+<li>一对多关系：部门和员工</li>
+<li>一个部门有多个员工，一个员工属于一个部门，部门是一，员工是多</li>
+<li>在实体类之间表示一对多关系，员工表示所属部门，使用对象类型属性进行表示</li>
+</ul>
+<p>Dept.java</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">//部门类
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Dept</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">dname</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDname</span><span class="o">(</span><span class="n">String</span> <span class="n">dname</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">dname</span> <span class="o">=</span> <span class="n">dname</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">&#34;Dept{&#34;</span> <span class="o">+</span>
+                <span class="s">&#34;dname=&#39;&#34;</span> <span class="o">+</span> <span class="n">dname</span> <span class="o">+</span> <span class="sc">&#39;\&#39;&#39;</span> <span class="o">+</span>
+                <span class="sc">&#39;}&#39;</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Emp.java</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="c1">//员工类
+</span><span class="c1"></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Emp</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">ename</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">gender</span><span class="o">;</span>
+    <span class="c1">//员工属于某一个部门，使用对象形式表示
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">Dept</span> <span class="n">dept</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDept</span><span class="o">(</span><span class="n">Dept</span> <span class="n">dept</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">dept</span> <span class="o">=</span> <span class="n">dept</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEname</span><span class="o">(</span><span class="n">String</span> <span class="n">ename</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ename</span> <span class="o">=</span> <span class="n">ename</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGender</span><span class="o">(</span><span class="n">String</span> <span class="n">gender</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">gender</span> <span class="o">=</span> <span class="n">gender</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ename</span><span class="o">+</span><span class="s">&#34;::&#34;</span><span class="o">+</span><span class="n">gender</span><span class="o">+</span><span class="s">&#34;::&#34;</span><span class="o">+</span><span class="n">dept</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>bean.xml（内部Bean）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--内部 bean--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;emp&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.bean.Emp&#34;</span><span class="nt">&gt;</span>
+   <span class="c">&lt;!--设置两个普通属性--&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;ename&#34;</span> <span class="na">value=</span><span class="s">&#34;lucy&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;gender&#34;</span> <span class="na">value=</span><span class="s">&#34;女&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+    <span class="c">&lt;!--设置对象类型属性--&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;dept&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;dept&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.bean.Dept&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;dname&#34;</span> <span class="na">value=</span><span class="s">&#34;安保部&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>注入属性 - 级联赋值</li>
+</ol>
+<ul>
+<li>第一种写法</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--级联赋值--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;emp&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.bean.Emp&#34;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--设置两个普通属性--&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;ename&#34;</span> <span class="na">value=</span><span class="s">&#34;lucy&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;gender&#34;</span> <span class="na">value=</span><span class="s">&#34;女&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+    <span class="c">&lt;!--级联赋值--&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;dept&#34;</span> <span class="na">ref=</span><span class="s">&#34;dept&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;dept&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.bean.Dept&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;dname&#34;</span> <span class="na">value=</span><span class="s">&#34;财务部&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>第二种写法
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://gitee.com/lonercci/picbed/raw/master/img/202109252133214.png"
+        data-srcset="https://gitee.com/lonercci/picbed/raw/master/img/202109252133214.png, https://gitee.com/lonercci/picbed/raw/master/img/202109252133214.png 1.5x, https://gitee.com/lonercci/picbed/raw/master/img/202109252133214.png 2x"
+        data-sizes="auto"
+        alt="https://gitee.com/lonercci/picbed/raw/master/img/202109252133214.png"
+        title="https://gitee.com/lonercci/picbed/raw/master/img/202109252133214.png" /></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--级联赋值--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;emp&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.bean.Emp&#34;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--设置两个普通属性--&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;ename&#34;</span> <span class="na">value=</span><span class="s">&#34;lucy&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;gender&#34;</span> <span class="na">value=</span><span class="s">&#34;女&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+    <span class="c">&lt;!--级联赋值--&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;dept&#34;</span> <span class="na">ref=</span><span class="s">&#34;dept&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;dept.dname&#34;</span> <span class="na">value=</span><span class="s">&#34;技术部&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;dept&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.bean.Dept&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;dname&#34;</span> <span class="na">value=</span><span class="s">&#34;财务部&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="xml-注入集合属性">xml 注入集合属性</h5>
+<ul>
+<li>注入数组类型属性</li>
+<li>注入 List 集合类型属性</li>
+<li>注入 Map 集合类型属性</li>
+</ul>
+<p><strong>代码案例</strong></p>
+<ol>
+<li>创建类，定义数组、list、map、set 类型属性，生成对应 set 方法</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Stu</span> <span class="o">{</span>
+    <span class="c1">//1 数组类型属性
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">courses</span><span class="o">;</span>
+    <span class="c1">//2 list集合类型属性
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">;</span>
+    <span class="c1">//3 map集合类型属性
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">maps</span><span class="o">;</span>
+    <span class="c1">//4 set集合类型属性
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">sets</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCourseList</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Course</span><span class="o">&gt;</span> <span class="n">courseList</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">courseList</span> <span class="o">=</span> <span class="n">courseList</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSets</span><span class="o">(</span><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">sets</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">sets</span> <span class="o">=</span> <span class="n">sets</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setList</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">list</span> <span class="o">=</span> <span class="n">list</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMaps</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">maps</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">maps</span> <span class="o">=</span> <span class="n">maps</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>在 spring 配置文件进行配置</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--1 集合类型属性注入--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;stu&#34;</span> <span class="na">class=</span><span class="s">&#34;com.atguigu.spring5.collectiontype.Stu&#34;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--数组类型属性注入--&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;courses&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;array&gt;</span>
+            <span class="nt">&lt;value&gt;</span>java课程<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value&gt;</span>数据库课程<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/array&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+    <span class="c">&lt;!--list类型属性注入--&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;list&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;list&gt;</span>
+            <span class="nt">&lt;value&gt;</span>张三<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value&gt;</span>小三<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/list&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+    <span class="c">&lt;!--map类型属性注入--&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;maps&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;map&gt;</span>
+            <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&#34;JAVA&#34;</span> <span class="na">value=</span><span class="s">&#34;java&#34;</span><span class="nt">&gt;&lt;/entry&gt;</span>
+            <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&#34;PHP&#34;</span> <span class="na">value=</span><span class="s">&#34;php&#34;</span><span class="nt">&gt;&lt;/entry&gt;</span>
+        <span class="nt">&lt;/map&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+    <span class="c">&lt;!--set类型属性注入--&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;sets&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;set&gt;</span>
+            <span class="nt">&lt;value&gt;</span>MySQL<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;value&gt;</span>Redis<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/set&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+    <span class="c">&lt;!--注入list集合类型，值是对象--&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;courseList&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;list&gt;</span>
+            <span class="nt">&lt;ref</span> <span class="na">bean=</span><span class="s">&#34;course1&#34;</span><span class="nt">&gt;&lt;/ref&gt;</span>
+            <span class="nt">&lt;ref</span> <span class="na">bean=</span><span class="s">&#34;course2&#34;</span><span class="nt">&gt;&lt;/ref&gt;</span>
+        <span class="nt">&lt;/list&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="xml-注入集合---在集合里面设置对象类型值">xml 注入集合 - (在集合里面设置对象类型值)</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--创建多个course对象--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;course1&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.collectiontype.Course&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cname&#34;</span> <span class="na">value=</span><span class="s">&#34;Spring5框架&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;course2&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.collectiontype.Course&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;cname&#34;</span> <span class="na">value=</span><span class="s">&#34;MyBatis框架&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+
+<span class="c">&lt;!--注入list集合类型，值是对象--&gt;</span>
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;courseList&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;list&gt;</span>
+        <span class="nt">&lt;ref</span> <span class="na">bean=</span><span class="s">&#34;course1&#34;</span><span class="nt">&gt;&lt;/ref&gt;</span>
+        <span class="nt">&lt;ref</span> <span class="na">bean=</span><span class="s">&#34;course2&#34;</span><span class="nt">&gt;&lt;/ref&gt;</span>
+    <span class="nt">&lt;/list&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="xml-注入集合---把集合注入部分提取出来">xml 注入集合 - (把集合注入部分提取出来)</h5>
+<ol>
+<li>在 spring 配置文件中引入名称空间 util</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">&#34;http://www.springframework.org/schema/beans&#34;</span>
+       <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+       <span class="na">xmlns:p=</span><span class="s">&#34;http://www.springframework.org/schema/p&#34;</span>
+       <span class="na">xmlns:util=</span><span class="s">&#34;http://www.springframework.org/schema/util&#34;</span>
+       <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+</span><span class="s">                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd&#34;</span><span class="nt">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>使用 util 标签完成 list 集合注入提取</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="c">&lt;!--1 提取list集合类型属性注入--&gt;</span>
+<span class="nt">&lt;util:list</span> <span class="na">id=</span><span class="s">&#34;bookList&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;value&gt;</span>易筋经<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>九阴真经<span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;value&gt;</span>九阳神功<span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/util:list&gt;</span>
+
+<span class="c">&lt;!--2 提取list集合类型属性注入使用--&gt;</span>
+<span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;book&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.collectiontype.Book&#34;</span> <span class="na">scope=</span><span class="s">&#34;prototype&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;list&#34;</span> <span class="na">ref=</span><span class="s">&#34;bookList&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="factorybean">FactoryBean</h5>
+<ol>
+<li>Spring 有两种类型 bean，一种普通 bean，另外一种工厂 bean（FactoryBean）</li>
+<li>普通 bean：在配置文件中定义 bean 类型就是返回类型</li>
+<li>工厂 bean：在配置文件定义 bean 类型可以和返回类型不一样</li>
+</ol>
+<p>第一步 创建类，让这个类作为工厂 bean，实现接口 FactoryBean
+第二步 实现接口里面的方法，在实现的方法中定义返回的 bean 类型</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyBean</span> <span class="kd">implements</span> <span class="n">FactoryBean</span><span class="o">&lt;</span><span class="n">Course</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="c1">//定义返回bean
+</span><span class="c1"></span>    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Course</span> <span class="nf">getObject</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="n">Course</span> <span class="n">course</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Course</span><span class="o">();</span>
+        <span class="n">course</span><span class="o">.</span><span class="na">setCname</span><span class="o">(</span><span class="s">&#34;abc&#34;</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">course</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Class</span><span class="o">&lt;?&gt;</span> <span class="n">getObjectType</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isSingleton</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;myBean&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.factorybean.MyBean&#34;</span><span class="nt">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Test</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">test3</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">ApplicationContext</span> <span class="n">context</span> <span class="o">=</span>
+        <span class="k">new</span> <span class="n">ClassPathXmlApplicationContext</span><span class="o">(</span><span class="s">&#34;bean3.xml&#34;</span><span class="o">);</span>
+    <span class="n">Course</span> <span class="n">course</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="s">&#34;myBean&#34;</span><span class="o">,</span> <span class="n">Course</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">course</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="bean-作用域">bean 作用域</h5>
+<ol>
+<li>
+<p>在 Spring 里面，设置创建 bean 实例是单实例还是多实例</p>
+</li>
+<li>
+<p>在 Spring 里面，默认情况下，bean 是单实例对象</p>
+</li>
+<li>
+<p>如何设置单实例还是多实例
+（1）在 spring 配置文件 bean 标签里面有属性（scope）用于设置单实例还是多实例</p>
+<p>（2）scope 属性值：</p>
+<ul>
+<li>在 spring 配置文件 bean 标签里面有属性（scope）用于设置单实例还是多实例</li>
+<li>scope 属性值</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">&#34;book&#34;</span> <span class="na">class=</span><span class="s">&#34;com.lone.collectiontype.Book&#34;</span> <span class="na">scope=</span><span class="s">&#34;prototype&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&#34;list&#34;</span> <span class="na">ref=</span><span class="s">&#34;bookList&#34;</span><span class="nt">&gt;&lt;/property&gt;</span>
+<span class="nt">&lt;/bean&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>singleton 和 prototype 区别
+<ul>
+<li>singleton 单实例，prototype 多实例</li>
+<li>设置 scope 值是 singleton 时候，加载 spring 配置文件时候就会创建单实例对象</li>
+<li>设置 scope 值是 prototype 时候，不是在加载 spring 配置文件时候创建 对象，在调用 getBean 方法时候创建多实例对象</li>
+</ul>
+</li>
+</ol>
+<h5 id="bean-生命周期">bean 生命周期</h5>
+<ol>
+<li>
+<p>生命周期
+（1）从对象创建到对象销毁的过程</p>
+</li>
+<li>
+<p>bean 生命周期
+（1）通过构造器创建 bean 实例（无参数构造） 
+（2）为 bean 的属性设置值和对其他 bean 引用（调用 set 方法） 
+（3）调用 bean 的初始化的方法（需要进行配置初始化的方法） 
+（4）bean 可以使用了（对象获取到了） 
+（5）当容器关闭时候，调用 bean 的销毁的方法（需要进行配置销毁的方法）</p>
+</li>
+</ol>
+<h5 id="xml-自动装配">xml 自动装配</h5>
+<ol>
+<li>
+<p>什么是自动装配</p>
+<p>（1）根据指定装配规则（属性名称或者属性类型），Spring 自动将匹配的属性值进行注入</p>
+</li>
+<li>
+<p>演示自动装配过程</p>
+<ul>
+<li>（1）根据属性名称自动注入</li>
+<li>（2）根据属性类型自动注入</li>
+</ul>
+</li>
+</ol>
+<h4 id="bean-管理操作---基于注解方式实现">Bean 管理操作 - 基于注解方式实现</h4>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-09-26</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/java/">Java</a>,&nbsp;<a href="/tags/note/">note</a>,&nbsp;<a href="/tags/spring/">Spring</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" class="prev" rel="prev" title="实习总结"><i class="fas fa-angle-left fa-fw"></i>实习总结</a></div>
+</div>
+<div id="comments"><div id="tcomment"></div>
+        <script src="https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js"></script>
+        <script>
+        twikoo.init({
+          envId: 'blog-data-0gc3ets7c557f7fd',
+          
+          el: '#tcomment',
+          
+          
+        })
+        </script>
+
+    </div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"></br></br></br></br></div><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.87.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Lone</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.77eb6ae63c63c88c5e7a10b6c9570c54.css" integrity="md5-d&#43;tq5jxjyIxeehC2yVcMVA=="><link rel="stylesheet" href="/lib/katex/katex.min.ef3c395634e43fe45f5332bfca2287b3.css" integrity="md5-7zw5VjTkP&#43;RfUzK/yiKHsw=="><link rel="stylesheet" href="/lib/katex/copy-tex.min.622133ef544b0f203604a52bebba29f4.css" integrity="md5-YiEz71RLDyA2BKUr67op9A=="><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.dd4e1772a44268dd6e27f193695067fc.js" integrity="md5-3U4XcqRCaN1uJ/GTaVBn/A=="></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.10321080d79e27ee01ff36859c02acd3.js" integrity="md5-EDIQgNeeJ&#43;4B/zaFnAKs0w=="></script><script type="text/javascript" src="/lib/lunr/lunr.min.f2eea188dc4939c55ff8f55569a4e87c.js" integrity="md5-8u6hiNxJOcVf&#43;PVVaaTofA=="></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.76a9898754052993cab798a24f45d94e.js" integrity="md5-dqmJh1QFKZPKt5iiT0XZTg=="></script><script type="text/javascript" src="/lib/lunr/lunr.zh.min.afbe35f35a427dd563d97cbdc9eb85d5.js" integrity="md5-r74181pCfdVj2Xy9yeuF1Q=="></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.40c0bfc764764587555c066d46fe6071.js" integrity="md5-QMC/x2R2RYdVXAZtRv5gcQ=="></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.c6a5b6b1db8980fdc42cd3456fe1ec74.js" integrity="md5-xqW2sduJgP3ELNNFb&#43;HsdA=="></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.ba38a712df31c778e10e8211f8cb891b.js" integrity="md5-ujinEt8xx3jhDoIR&#43;MuJGw=="></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.fa56076f9d071729612c4849acae1ce5.js" integrity="md5-&#43;lYHb50HFylhLEhJrK4c5Q=="></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.4f0896a2ff5ef76f0dd00f5c5de65abb.js" integrity="md5-TwiWov9e928N0A9cXeZauw=="></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.221393f48062472d1e72960fda7db7a3.js" integrity="md5-IhOT9IBiRy0ecpYP2n23ow=="></script><script type="text/javascript" src="/lib/katex/katex.min.c158c9e823b681cf535f46596b5e4eac.js" integrity="md5-wVjJ6CO2gc9TX0ZZa15OrA=="></script><script type="text/javascript" src="/lib/katex/auto-render.min.28cd0b98cd3f4fa37d52f3ffe47ad9d4.js" integrity="md5-KM0LmM0/T6N9UvP/5HrZ1A=="></script><script type="text/javascript" src="/lib/katex/copy-tex.min.bfaec7d1dea915d74a7a6d833f0ff62e.js" integrity="md5-v67H0d6pFddKem2DPw/2Lg=="></script><script type="text/javascript" src="/lib/katex/mhchem.min.1bbb252363e83547d4b2186a41eaca28.js" integrity="md5-G7slI2PoNUfUshhqQerKKA=="></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":15},"comment":{},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","lunrLanguageCode":"zh","lunrSegmentitURL":"/lib/lunr/lunr.segmentit.js","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.8043ef4f5ae2d4fd302305ffd8316f55.js" integrity="md5-gEPvT1ri1P0wIwX/2DFvVQ=="></script></body>
+</html>
