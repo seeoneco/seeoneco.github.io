@@ -27,7 +27,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/example.org\/34%E9%81%93mysql%E7%BB%83%E4%B9%A0%E9%A2%98\/"
-        },"genre": "posts","keywords": "mysql","wordcount":  1478 ,
+        },"genre": "posts","keywords": "mysql","wordcount":  3131 ,
         "url": "http:\/\/example.org\/34%E9%81%93mysql%E7%BB%83%E4%B9%A0%E9%A2%98\/","datePublished": "2021-10-17T08:42:28+08:00","dateModified": "2021-10-17T08:42:28+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -104,8 +104,8 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">34道MySql练习题</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Lone</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E7%AC%94%E8%AE%B0/"><i class="far fa-folder fa-fw"></i>笔记</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-17">2021-10-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 1478 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 3 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-17">2021-10-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 3131 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 7 分钟&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -122,6 +122,13 @@
         <li><a href="#3取得部门中所有人的平均的薪水等级">3、取得部门中（所有人的）平均的薪水等级</a></li>
         <li><a href="#4不准用组函数max取得最高薪水给出两种解决方案">4、不准用组函数（Max），取得最高薪水（给出两种解决方案）</a></li>
         <li><a href="#5取得平均薪水最高的部门的部门编号至少给出两种解决方案">5、取得平均薪水最高的部门的部门编号（至少给出两种解决方案）</a></li>
+        <li><a href="#6取得平均薪水最高的部门的部门名称">6、取得平均薪水最高的部门的部门名称</a></li>
+        <li><a href="#7求平均薪水的等级最低的部门的部门名称">7、求平均薪水的等级最低的部门的部门名称</a></li>
+        <li><a href="#8取得比普通员工员工代码没有在mgr字段上出现的的最高薪水还要高的领导人姓名">8、取得比普通员工(员工代码没有在mgr字段上出现的)的最高薪水还要高的领导人姓名</a></li>
+        <li><a href="#9取得薪水最高的前五名员工">9、取得薪水最高的前五名员工</a></li>
+        <li><a href="#10取得薪水最高的第六到第十名员工">10、取得薪水最高的第六到第十名员工</a></li>
+        <li><a href="#11取得最后入职的5名员工">11、取得最后入职的5名员工</a></li>
+        <li><a href="#12取得每个薪水等级有多少员工">12、取得每个薪水等级有多少员工</a></li>
       </ul>
     </li>
   </ul>
@@ -581,7 +588,7 @@
 </span><span class="w"></span><span class="o">+</span><span class="c1">--------+---------+--------+--------+
 </span></code></pre></td></tr></table>
 </div>
-</div><p>我们需要求的平均的薪水等级，就把每个相同部门的人的等级相加，然后就平均值即可。
+</div><p>我们需要求的平均的薪水等级，就把每个相同部门的人的等级相加，然后就平均值即可。<br>
 2. 基于上面的表按照deptno分组，</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -768,13 +775,13 @@
 <pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">deptno</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
-</div><p>第二步使用max，不能直接在上面套一个<code>max</code>,<code>max(avg(e.sal))</code>写法书错误的，</p>
+</div><p>第二步使用max，不能直接在上面套一个<code>max</code>,<code>max(avg(e.sal))</code>写法是错误的，</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">avesal</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">avgsal</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t</span><span class="p">;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>拿到最大值：</p>
@@ -840,7 +847,675 @@
         title="https://gitee.com/lonercci/picbed/raw/master/img/202110192218757.png" /></p>
 <blockquote>
 <p><strong>Tips: Having的用法</strong>：</p>
-<p>having字句可以让我们筛选成组后的各种数据，where字句在聚合前先筛选记录，也就是说作用在group by和having字句前。而 having子句在聚合后对组记录进行筛选。</p>
+<ol>
+<li>
+<p>having字句可以让我们<strong>筛选</strong>成组后的各种数据，where字句在聚合前先筛选记录，也就是说作用在group by和having字句前。而 having子句在聚合后对组记录进行筛选。</p>
+</li>
+<li>
+<p>HAVING 只能与 SELECT 语句一起使用。
+HAVING 通常在 GROUP BY 子句中使用。
+如果不使用 GROUP BY 子句，则 HAVING 的行为与 WHERE 子句一样。</p>
+</li>
+<li>
+<p><a href="https://bbs.csdn.net/topics/390162668" target="_blank" rel="noopener noreffer">https://bbs.csdn.net/topics/390162668</a></p>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li>使用max的第二种思路，与<code>dept</code>表连接（这是视频里一个同学的写法，但是看弹幕里mysql8.0以后好像会报错）</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> 
+</span><span class="w">	</span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="n">t</span><span class="w">
+</span><span class="w"></span><span class="k">join</span><span class="w">
+</span><span class="w">	</span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span><span class="w"></span><span class="k">on</span><span class="w">
+</span><span class="w">	</span><span class="n">t</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="k">having</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">avgsal</span><span class="p">);</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="6取得平均薪水最高的部门的部门名称">6、取得平均薪水最高的部门的部门名称</h3>
+<ul>
+<li>按<code>deptno</code>分组，排序，<code>limit1</code>只选最大值。再与<code>dept</code>表按<code>t.deptno = d.deptno</code>连接</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="c1">---------------第一种写法--------------
+</span><span class="c1"></span><span class="k">select</span><span class="w"> 
+</span><span class="w"></span><span class="n">t</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w"> 
+</span><span class="w">	</span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avgsal</span><span class="w">
+</span><span class="w">	 </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w">
+</span><span class="w">	 </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">deptno</span><span class="w"> 
+</span><span class="w">	 </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">desc</span><span class="w"> 
+</span><span class="w">	 </span><span class="k">limit</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w">
+</span><span class="w"></span><span class="k">join</span><span class="w"> 
+</span><span class="w">   </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span><span class="w"></span><span class="k">on</span><span class="w"> 
+</span><span class="w">   </span><span class="n">t</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span><span class="w">  
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+-------------+------------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">avgsal</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">dname</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+-------------+------------+
+</span><span class="c1"></span><span class="o">|</span><span class="w">     </span><span class="mi">10</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2916</span><span class="p">.</span><span class="mi">666667</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ACCOUNTING</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+-------------+------------+
+</span><span class="c1"></span><span class="w">
+</span><span class="w"></span><span class="c1">---------------第二种写法--------------
+</span><span class="c1"></span><span class="k">select</span><span class="w"> 
+</span><span class="w">	</span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avgsal</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w">
+</span><span class="w">	</span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span><span class="w"></span><span class="k">join</span><span class="w">
+</span><span class="w">	</span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span><span class="w"></span><span class="k">on</span><span class="w"> 
+</span><span class="w"></span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w">
+</span><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> 
+</span><span class="w">	</span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="w">
+</span><span class="w"></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w">
+</span><span class="w">	</span><span class="n">avgsal</span><span class="w"> </span><span class="k">desc</span><span class="w">
+</span><span class="w"></span><span class="k">limit</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">------------+-------------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">dname</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">avgsal</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">------------+-------------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">ACCOUNTING</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2916</span><span class="p">.</span><span class="mi">666667</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">------------+-------------+
+</span></code></pre></td></tr></table>
+</div>
+</div><p>这里的第二种写法通过d表的dname进行分组聚合，那么在select中就可以直接使用d.dname字段了。算是一种讨巧的方法。</p>
+<h3 id="7求平均薪水的等级最低的部门的部门名称">7、求平均薪水的等级最低的部门的部门名称</h3>
+<p>我的思路：先求部门的平均薪水等级，（正好前面第三题与这个类似）再连表升序选第一个搞定。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w">
+</span><span class="w">	</span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">grade</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avgsal</span><span class="w">
+</span><span class="w">	 </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span><span class="w">     </span><span class="k">join</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span><span class="w">     </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">losal</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hisal</span><span class="w">
+</span><span class="w">     </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">deptno</span><span class="p">)</span><span class="n">t</span><span class="w">
+</span><span class="w"></span><span class="k">join</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w">
+</span><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">deptno</span><span class="w">
+</span><span class="w"></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">avgsal</span><span class="w"> </span><span class="k">asc</span><span class="w"> 
+</span><span class="w"></span><span class="k">limit</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">dname</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">SALES</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+
+</span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>我们上面的思路实际上是求<strong>平均的薪水等级</strong>按照grade求平均数。</p>
+<p>而题目让求的是<strong>平均薪水的等级</strong>使用sal求平均数。</p>
+<p>但是这样看似得到了答案，但是却不严谨。我们来思考两个问题。</p>
+<ol>
+<li>
+<p>平均薪水最低，那么薪水等级一定是最低。</p>
+</li>
+<li>
+<p>平均薪水不是最低，但也有可能是等级最低。</p>
+</li>
+</ol>
+<p>打个比方，薪资在1000-1500,的属于薪资等级1，1500-2000的属于薪资等级2。那么有三个员工，工资分别是1100,1300,1800。毫无疑问，工资最低的1100,薪水等级也是最低的1。而工资不是最低的1300，薪资等级却也是1。</p>
+<p>因此上面的sql语句是错误的，而且不够严谨。正确思路如下，</p>
+</blockquote>
+<p>思路：
+第一步：找出每个部门的平均薪水(按照部门分组求平均值)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">deptno</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+-------------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">avgsal</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+-------------+
+</span><span class="c1"></span><span class="o">|</span><span class="w">     </span><span class="mi">10</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2916</span><span class="p">.</span><span class="mi">666667</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w">     </span><span class="mi">20</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2175</span><span class="p">.</span><span class="mi">000000</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w">     </span><span class="mi">30</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1566</span><span class="p">.</span><span class="mi">666667</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+-------------+
+</span></code></pre></td></tr></table>
+</div>
+</div><p>第二步：找出每个部门的平均薪水等级。以上t表和salgrade表连接，条件是<code>t.avgsal between s.losal and s.hisal</code>，查出此表之后，我们还缺一个该如何查出最低的等级。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">grade</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w">
+</span><span class="w"></span><span class="k">join</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">avgsal</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">losal</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hisal</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+-------------+-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">avgsal</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+-------------+-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w">     </span><span class="mi">10</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2916</span><span class="p">.</span><span class="mi">666667</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w">     </span><span class="mi">20</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2175</span><span class="p">.</span><span class="mi">000000</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w">     </span><span class="mi">30</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1566</span><span class="p">.</span><span class="mi">666667</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+-------------+-------+
+</span></code></pre></td></tr></table>
+</div>
+</div><p>我们可以想到，<strong>求最低等级 ==&gt; 平均薪水最低的等级一定是最低的</strong>，因此我们做的是<strong>通过最低的平均薪水来查出最低的薪水等级</strong>。这样做很严谨，因为等级是一个区间，就算有两个相同的最低等级也能查的出来，而不是使用limit1只能查出来一个。</p>
+<ol>
+<li>步骤一：查到最低的平均薪水。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">asc</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">avgsal</span><span class="w">      </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="mi">1566</span><span class="p">.</span><span class="mi">666667</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------------+
+</span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>步骤二： 将上表加入salgrade，通过最低的平均薪水查到最低的薪水等级。 条件是 avgsal between losal and hisal</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">(</span><span class="mi">1566</span><span class="p">.</span><span class="mi">666667</span><span class="p">)</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">losal</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hisal</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w">     </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+
+</span></code></pre></td></tr></table>
+</div>
+</div><p>我们把数值替换成sql语句</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">asc</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">losal</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hisal</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w">     </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+
+</span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>步骤三：将上面大致思路的第二步中再加入一个where条件即加入上面这张表</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">grade</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">deptno</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w">
+</span><span class="w"></span><span class="k">join</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">avgsal</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">losal</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hisal</span><span class="w">
+</span><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">grade</span><span class="o">=</span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">asc</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">losal</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hisal</span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+-------------+-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">avgsal</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+-------------+-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w">     </span><span class="mi">30</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1566</span><span class="p">.</span><span class="mi">666667</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+-------------+-------+
+</span></code></pre></td></tr></table>
+</div>
+</div><p>至此，我们基本已经完成了。但是想要查询的字段不是部门编号，而是名称。只需要在这行中连接一下dept表。<code>from (select deptno,avg(sal) as avgsal from emp group by deptno ) t</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">grade</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="p">,</span><span class="k">avg</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">deptno</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">deptno</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">dname</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">t</span><span class="w">
+</span><span class="w"></span><span class="k">join</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="n">s</span><span class="w">
+</span><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">t</span><span class="p">.</span><span class="n">avgsal</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">losal</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hisal</span><span class="w">
+</span><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">grade</span><span class="o">=</span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">deptno</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">avgsal</span><span class="w"> </span><span class="k">asc</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">losal</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hisal</span><span class="p">);</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+-------------+-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">dname</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">avgsal</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+-------------+-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">SALES</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1566</span><span class="p">.</span><span class="mi">666667</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+-------------+-------+
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="8取得比普通员工员工代码没有在mgr字段上出现的的最高薪水还要高的领导人姓名">8、取得比普通员工(员工代码没有在mgr字段上出现的)的最高薪水还要高的领导人姓名</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">mgr</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="p">;</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">mgr</span><span class="w">  </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="mi">7902</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="mi">7698</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="mi">7839</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="mi">7566</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="mi">7788</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="mi">7782</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">------+
+</span></code></pre></td></tr></table>
+</div>
+</div><p>员工编号没有在以上范围内的都是普通员工。</p>
+<p>思路：</p>
+<p>步骤一： 找出普通员工的最高薪水。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="err">普通员工</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">empno</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">mgr</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="p">)</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>会发现查出来的是NULL。Tips: <strong>not in在使用的时候，后面的小括号记得排除NULL。</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">empno</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">mgr</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">mgr</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">----------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">----------+
+</span><span class="c1"></span><span class="o">|</span><span class="w">  </span><span class="mi">1600</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">----------+
+</span></code></pre></td></tr></table>
+</div>
+</div><p>步骤二：找出高于1600的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="w"> 
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w">
+</span><span class="w"></span><span class="k">where</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="o">&gt;</span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">sal</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">empno</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">mgr</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">mgr</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">));</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+---------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">ename</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">sal</span><span class="w">     </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+---------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">JONES</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2975</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">BLAKE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2850</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">CLARK</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2450</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">SCOTT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">3000</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">KING</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">5000</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">FORD</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">3000</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+---------+
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="9取得薪水最高的前五名员工">9、取得薪水最高的前五名员工</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">ename</span><span class="p">,</span><span class="n">sal</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w">
+</span><span class="w"></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">sal</span><span class="w"> </span><span class="k">desc</span><span class="w"> 
+</span><span class="w"></span><span class="k">limit</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+---------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">ename</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">sal</span><span class="w">     </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+---------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">KING</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">5000</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">FORD</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">3000</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">SCOTT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">3000</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">JONES</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2975</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">BLAKE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2850</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+---------+
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="10取得薪水最高的第六到第十名员工">10、取得薪水最高的第六到第十名员工</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">ename</span><span class="p">,</span><span class="n">sal</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w">
+</span><span class="w"></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">sal</span><span class="w"> </span><span class="k">desc</span><span class="w">
+</span><span class="w"></span><span class="k">limit</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+---------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">ename</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">sal</span><span class="w">     </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+---------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">CLARK</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">2450</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ALLEN</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">1600</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">TURNER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1500</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">MILLER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1300</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">WARD</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">1250</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+---------+
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="11取得最后入职的5名员工">11、取得最后入职的5名员工</h3>
+<p>日期降序排列。。。。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">ename</span><span class="p">,</span><span class="n">hiredate</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">hiredate</span><span class="w"> </span><span class="k">desc</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+------------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">ename</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">hiredate</span><span class="w">   </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+------------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">ADAMS</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">1987</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">SCOTT</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">1987</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">19</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">MILLER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1982</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">JAMES</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">1981</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">FORD</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">1981</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">03</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+------------+
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="12取得每个薪水等级有多少员工">12、取得每个薪水等级有多少员工</h3>
+<p>第一步：找出每个员工的薪水等级</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">ename</span><span class="p">,</span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="p">,</span><span class="n">s</span><span class="p">.</span><span class="n">grade</span><span class="w"> 
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> 
+</span><span class="w"></span><span class="k">join</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="n">s</span><span class="w"> 
+</span><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="w"> 
+</span><span class="w"></span><span class="k">between</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">losal</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hisal</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+---------+-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">ename</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">sal</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+---------+-------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">SMITH</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="mi">800</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ALLEN</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">1600</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">WARD</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">1250</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">JONES</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">2975</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">MARTIN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1250</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">BLAKE</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">2850</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">CLARK</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">2450</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">SCOTT</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">3000</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">KING</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">5000</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">TURNER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1500</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">ADAMS</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="mi">1100</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">JAMES</span><span class="w">  </span><span class="o">|</span><span class="w">  </span><span class="mi">950</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">FORD</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="mi">3000</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w"> </span><span class="n">MILLER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1300</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">|</span><span class="w">     </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">--------+---------+-------+
+</span></code></pre></td></tr></table>
+</div>
+</div><p>第二步：继续分组统计数量</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">select</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">grade</span><span class="p">,</span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="k">from</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">e</span><span class="w"> 
+</span><span class="w"></span><span class="k">join</span><span class="w"> </span><span class="n">salgrade</span><span class="w"> </span><span class="n">s</span><span class="w"> 
+</span><span class="w"></span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">sal</span><span class="w"> 
+</span><span class="w"></span><span class="k">between</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">losal</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">hisal</span><span class="w">
+</span><span class="w"></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">grade</span><span class="p">;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+----------+
+</span><span class="c1"></span><span class="o">|</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+----------+
+</span><span class="c1"></span><span class="o">|</span><span class="w">     </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">        </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w">     </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w">        </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w">     </span><span class="mi">3</span><span class="w"> </span><span class="o">|</span><span class="w">        </span><span class="mi">2</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w">     </span><span class="mi">4</span><span class="w"> </span><span class="o">|</span><span class="w">        </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">|</span><span class="w">     </span><span class="mi">5</span><span class="w"> </span><span class="o">|</span><span class="w">        </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w">
+</span><span class="w"></span><span class="o">+</span><span class="c1">-------+----------+
+</span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>小Tips: 如果存在分组函数，比如这里<code>group by s.grade</code>那么在select 中只能写分组的字段和分组函数。</p>
 </blockquote>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
