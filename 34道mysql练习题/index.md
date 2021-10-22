@@ -4,7 +4,21 @@
 
 ## 34道MySql练习题
 ### 前言
-在实习的时候发现基础部分就是写sql语句，大部分都是增删改查。但是水平实在是一言难尽，故此重新复习一遍。
+在web中最基础的部分就是写sql语句，大部分都是增删改查。但是水平实在是一言难尽，故此重新复习一遍。
+
+### 难度星级之攻略
+
+都是自己亲身体验过的，随便打几颗星星玩（可能不太准确，笑）。有些知识点不熟悉所有显得有点难。还有一些题目不算难但是过程很绕或者是表述很绕，为了出题而出题，题目看懂了就还好。
+
+PS：第13题是面试题，有单独的SQL文件。与其余的33道题的sql没有关联。
+
+|     难度系数     | 题目序号                            |
+| :--------------: | ----------------------------------- |
+| ★☆☆☆（有手就行） | 18、21、23、27、30                  |
+| ★★☆☆（基础部分） | 1、2、9、10、11、17、23、25、29     |
+| ★★★☆（还可以吧） | 3、4、5、6、8、12、14、15、16、25、 |
+| ★★★★（阅读理解） | 7、13、19、20、22、24、26、28、33   |
+
 ### SQL文件及描述
 ```sql
 DROP TABLE IF EXISTS EMP;
@@ -674,7 +688,7 @@ limit 5,5;
 
 ### 11、取得最后入职的5名员工 
 
-日期降序排列。。。。
+日期降序排列。。。。从最近的日期到最远的日期。
 
 ```sql
 select ename,hiredate from emp order by hiredate desc limit 5;
@@ -743,5 +757,734 @@ group by s.grade;
 ```
 
 > 小Tips: 如果存在分组函数，比如这里`group by s.grade`那么在select 中只能写分组的字段和分组函数。
+
+### 13、面试题
+
+#### SQL 文件
+
+```sql
+CREATE TABLE SC
+(
+SNO VARCHAR (200),
+CNO VARCHAR(200),
+SCGRADE VARCHAR (200)
+);
+
+CREATE TABLE S
+(
+SNO VARCHAR(200),
+SNAME VARCHAR (200)
+);
+
+CREATE TABLE C
+(
+CNO VARCHAR (200),
+CNAME VARCHAR (200),
+CTEACHER VARCHAR (200) 
+);
+
+INSERT INTO C ( CNO, CNAME, CTEACHER ) VALUES ( '1','语文','张');
+INSERT INTO C ( CNO, CNAME, CTEACHER ) VALUES ( '2','政治','王');
+INSERT INTO C ( CNO, CNAME, CTEACHER ) VALUES ( '3','英语','李');
+INSERT INTO C ( CNO, CNAME, CTEACHER ) VALUES ( '4','数学','赵');
+INSERT INTO C ( CNO, CNAME, CTEACHER ) VALUES ( '5','物理','黎明');
+commit;
+
+INSERT INTO S ( SNO, SNAME ) VALUES ('1','学生1');
+INSERT INTO S ( SNO, SNAME ) VALUES ('2','学生2');
+INSERT INTO S ( SNO, SNAME ) VaLUES ('3','学生3');
+INSERT INTO S ( SNO, SNAME ) VALUES ('4','学生4');
+commit;
+
+INSERT INTO SC ( SNO, CNO, SCGRADE ) VALUES ( '1','1','40');
+INSERT INTO SC ( SNO, CNO, SCGRADE ) VALUES ( '1','2','30');
+INSERT INTO SC ( SNO, CNO, SCGRADE ) VALUES ( '1','3','20');
+INSERT INTO SC ( SNO, CNO, SCGRADE ) VALUES ( '1','4','80');
+INSERT INTO SC ( SNO, CNO, SCGRADE ) VALUES ( '1','5','60');
+INSERT INTO SC ( SNO, CNO, SCGRADE ) VALUES ( '2','1','60');
+INSERT INTO SC ( SNO, CNO, SCGRADE ) VALUES ( '2','2','60');
+INSERT INTO SC ( SNO, CNO, SCGRADE ) VALUES ( '2','3','60');
+INSERT INTO SC ( SNO, CNO, SCGRADE ) VALUES ( '2','4','60');
+INSERT INTO SC ( SNO, CNO, SCGRADE ) VALUES ( '2','5','40');
+INSERT INTO SC ( SNO, CNO, SCGRADE ) VALUES ( '3','1','60');
+INSERT INTO SC ( SNO, CNO, SCGRADE ) VALUES ( '3','3','80');
+commit ;
+```
+
+#### 描述
+
+有3个表S(学生表)，C（课程表），SC（学生选课表）
+
+S（SNO，SNAME）代表（学号，姓名）  
+
+C（CNO，CNAME，CTEACHER）代表（课号，课名，教师）
+
+SC（SNO，CNO，SCGRADE）代表（学号，课号，成绩） 
+
+#### 问题1：找出没选过“黎明”老师的所有学生姓名。
+
+```sql
+select sname
+from S
+where sname not in (select s.sname
+from SC sc
+join C c
+on sc.cno = c.cno
+join S s
+on sc.sno = s.sno
+where c.cteacher='黎明');
+
++-------+
+| sname |
++-------+
+| 学生3  |
+| 学生4  |
++-------+
+```
+
+#### 问题2：列出2门以上（含2门）不及格学生姓名及平均成绩。
+
+```sql
+-- 查询2门及以上的未及格的学生
+select sc.sno,count(sc.sno) as count
+from SC sc
+join S s
+on sc.sno = s.sno
+where sc.scgrade<60
+group by sc.sno
+having count>=2;
++------+-------+
+| sno  | count |
++------+-------+
+| 1    |     3 |
++------+-------+
+
+-- 与S表,SC表连接，条件t.sno = s.sno 
+select s.sname,avg(sc.scgrade)
+from S s
+join SC sc
+on s.sno = sc.sno
+join ()t
+on t.sno = s.sno
+group by s.sname;
+
+-- 填入
+select s.sname,avg(sc.scgrade)
+from S s
+join SC sc
+on s.sno = sc.sno
+join ( select sc.sno,count(sc.sno) as count
+	   from SC sc
+       join S s
+       on sc.sno = s.sno
+       where sc.scgrade<60
+       group by sc.sno
+       having count>=2)t
+on t.sno = s.sno
+group by s.sname;
+
++-------+-----------------+
+| sname | avg(sc.scgrade) |
++-------+-----------------+
+| 学生1 |              46 |
++-------+-----------------+
+```
+
+#### 问题3：即学过1号课程又学过2号课所有学生的姓名。
+
+```sql
+-- 同时学过1,2号课程的
+select sno from sc where cno = 1 and sno in(select sno from sc where cno = 2);
++------+
+| sno  |
++------+
+| 1    |
+| 2    |
++------+
+
+-- 与sc表连接 t.sno = s.sno
+select s.sname
+from S s
+join (select sno from sc where cno = 1 and sno in(select sno from sc where cno = 2))t
+on t.sno = s.sno;
+
++-------+
+| sname |
++-------+
+| 学生1 |
+| 学生2 |
++-------+
+```
+
+### 14、列出所有员工及其领导的姓名
+
+```sql
+select a.ename as '员工',b.ename as '领导'
+from emp a
+left join emp b
+on a.mgr = b.empno;
+
++--------+-------+
+| 员工   | 领导  |
++--------+-------+
+| SMITH  | FORD  |
+| ALLEN  | BLAKE |
+| WARD   | BLAKE |
+| JONES  | KING  |
+| MARTIN | BLAKE |
+| BLAKE  | KING  |
+| CLARK  | KING  |
+| SCOTT  | JONES |
+| KING   | NULL  |
+| TURNER | BLAKE |
+| ADAMS  | SCOTT |
+| JAMES  | BLAKE |
+| FORD   | JONES |
+| MILLER | CLARK |
++--------+-------+
+```
+
+> 小Tips: 
+>
+> left join（左联接）：返回左表中的所有记录以及和右表中的联接字段相等的记录。
+>
+> right join（右联接）：返回右表中的所有记录以及和左表中的联接字段相等的记录。
+>
+> inner join（等值联接，join）：只返回两个表中联接字段相等的记录。
+>
+> 相关文章：https://segmentfault.com/a/1190000017369618
+
+
+
+### 15、列出受雇日期早于其直接上级的所有员工的编号,姓名,部门名称 
+
+思路：
+
+1. `emp a` 员工表
+2. `emp b` 领导表
+3. 受雇日期早于领导 ==>  `a.mgr = b.empno and a.hiredate<b.hiredate`
+
+```sql
+select a.empno as empno,a.ename as ename,d.dname
+from emp a
+join dept d
+on a.deptno = d.deptno
+join emp b 
+on a.mgr = b.empno 
+where a.hiredate<b.hiredate;
+```
+
+> 小Tips：多表连接，多次使用join连接
+
+### 16、列出部门名称和这些部门的员工信息,同时列出那些没有员工的部门 
+
+```sql
+select d.dname,e.*
+from emp e
+right join dept d
+on e.deptno = d.deptno
+order by e.deptno;
++------------+-------+--------+-----------+------+------------+---------+---------+--------+
+| dname      | EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++------------+-------+--------+-----------+------+------------+---------+---------+--------+
+| OPERATIONS |  NULL | NULL   | NULL      | NULL | NULL       |    NULL |    NULL |   NULL |
+| ACCOUNTING |  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+| ACCOUNTING |  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
+| ACCOUNTING |  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+| RESEARCH   |  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |
+| RESEARCH   |  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+| RESEARCH   |  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+| RESEARCH   |  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |
+| RESEARCH   |  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+| SALES      |  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+| SALES      |  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+| SALES      |  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+| SALES      |  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+| SALES      |  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+| SALES      |  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
++------------+-------+--------+-----------+------+------------+---------+---------+--------+
+```
+
+> 小Tips：使用右外连接，`right join`
+
+### 17、列出至少有5个员工的所有部门 
+
+```sql
+select d.dname,count(*)
+from emp e
+join dept d
+on e.deptno = d.deptno
+group by d.dname
+having count(*)>=5;
+
++----------+----------+
+| dname    | count(*) |
++----------+----------+
+| RESEARCH |        5 |
+| SALES    |        6 |
++----------+----------+
+
+```
+
+### 18、列出薪金比"SMITH"多的所有员工信息 
+
+```sql
+select e.*
+from emp e
+where e.sal>(select sal from emp where ename="SMITH");
+
++-------+--------+-----------+------+------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+```
+
+### 19、列出所有"CLERK"(办事员)的姓名及其部门名称,部门的人数
+
+```sql
+select e.ename,d.dname
+from emp e
+join dept d
+on e.deptno = d.deptno
+where e.job="CLERK";
+
++--------+------------+
+| ename  | dname      |
++--------+------------+
+| SMITH  | RESEARCH   |
+| ADAMS  | RESEARCH   |
+| JAMES  | SALES      |
+| MILLER | ACCOUNTING |
++--------+------------+
+```
+
+到这一步很容易，那么后面的问题来了，怎么把部门的人数连上？  
+
+如果直接在使用group by d.dname分组，那么select中就无法使用e.name字段，还是查不出来。因此还是老老实实想办法用临时表吧。
+
+在上表中再加一个字段，d.deptno。这样在对emp表通过deptno做分组得出数量的同时有了deptno字段。既然有了相同的字段，那么就可以愉快的使用连表进行join了。
+
+```sql
+-- 第一步：
+select e.ename,d.dname,e.deptno as deptno
+from emp e
+join dept d
+on e.deptno = d.deptno
+where e.job="CLERK";
++--------+------------+--------+
+| ename  | dname      | deptno |
++--------+------------+--------+
+| SMITH  | RESEARCH   |     20 |
+| ADAMS  | RESEARCH   |     20 |
+| JAMES  | SALES      |     30 |
+| MILLER | ACCOUNTING |     10 |
++--------+------------+--------+
+-- 第二步： 对emp单独做分组，查询数量
+select deptno,count(*) as deptcount from emp group by deptno;
++--------+-----------+
+| deptno | deptcount |
++--------+-----------+
+|     10 |         3 |
+|     20 |         5 |
+|     30 |         6 |
++--------+-----------+
+
+-- 第三步：好了，现在直接通过deptno 进行连表操作。
+select t.*,tt.deptcount
+from ()t
+join ()tt
+on t.deptno = tt.deptno;
+
+-- 第四步：填入上面的两个语句。
+select t.*,tt.deptcount
+from (select e.ename,d.dname,e.deptno as deptno
+from emp e
+join dept d
+on e.deptno = d.deptno
+where e.job="CLERK")t
+join (select deptno,count(*) as deptcount from emp group by deptno)tt
+on t.deptno = tt.deptno;
+
++--------+------------+--------+-----------+
+| ename  | dname      | deptno | deptcount |
++--------+------------+--------+-----------+
+| SMITH  | RESEARCH   |     20 |         5 |
+| ADAMS  | RESEARCH   |     20 |         5 |
+| JAMES  | SALES      |     30 |         6 |
+| MILLER | ACCOUNTING |     10 |         3 |
++--------+------------+--------+-----------+
+```
+
+### 20、列出最低薪金大于1500的各种工作及从事此工作的全部雇员人数 
+
+```sql
+select e.job,count(*) from emp e group by e.job having min(sal)>1500;
++-----------+----------+
+| job       | count(*) |
++-----------+----------+
+| ANALYST   |        2 |
+| MANAGER   |        3 |
+| PRESIDENT |        1 |
++-----------+----------+
+```
+
+### 21、列出在部门"SALES"<销售部>工作的员工的姓名,假定不知道销售部的部门编号 
+
+。。。。想复杂了，以为是没有deptno字段，那样就没法做到连表了。
+
+```sql
+select ename from emp where deptno = (select deptno from dept where dname = "SALES");
+
++--------+
+| ename  |
++--------+
+| ALLEN  |
+| WARD   |
+| MARTIN |
+| BLAKE  |
+| TURNER |
+| JAMES  |
++--------+
+```
+
+### 22、列出薪金高于公司平均薪金的所有员工,所在部门,上级领导,雇员的工资等级
+
+```sql
+select e.ename as '员工',d.dname as '部门', l.ename as '领导',s.grade as '等级'
+from emp e
+join dept d
+on e.deptno = d.deptno
+left join emp l
+on e.mgr = l.empno
+join salgrade s
+on e.sal between s.losal and s.hisal
+where e.sal>(select avg(sal) from emp);
+
++-------+------------+-------+-------+
+| 员工   |  部门      | 领导   | grade |
++-------+------------+-------+-------+
+| JONES | RESEARCH   | KING  |     4 |
+| BLAKE | SALES      | KING  |     4 |
+| CLARK | ACCOUNTING | KING  |     4 |
+| SCOTT | RESEARCH   | JONES |     4 |
+| KING  | ACCOUNTING | NULL  |     5 |
+| FORD  | RESEARCH   | JONES |     4 |
++-------+------------+-------+-------+
+```
+
+### 23、列出与"SCOTT"从事相同工作的所有员工及部门名称
+
+```sql
+select e.job,e.ename,d.dname
+from emp e
+join dept d
+on e.deptno = d.deptno
+where e.job = (select job from emp where ename="SCOTT")
+and e.ename <> 'SCOTT';
+
++---------+-------+----------+
+| job     | ename | dname    |
++---------+-------+----------+
+| ANALYST | FORD  | RESEARCH |
++---------+-------+----------+
+```
+
+> 小Tips：要排除SCOTT自己，所以需要加上一个and条件
+
+### 24、列出薪金等于部门30中员工的薪金的其他员工的姓名和薪金 
+
+```sql
+-- 去重求出部门为30的所有薪金
+select distinct sal from emp where deptno = '30';
+
+-- 筛选薪金是上表中的人
+select ename,sal from emp where sal in ()
+
+-- 放进去,且不是这个部门的人
+select ename,sal from emp where sal in (select distinct sal from emp where deptno = '30') and deptno <> '30';
+
+空白表！
+Empty set (0.00 sec)
+```
+
+### 25、列出薪金高于在部门30工作的所有员工的薪金的员工姓名和薪金.部门名称
+
+```sql
+-- 求出部门30员工的最高薪资
+select max(sal) from emp group by deptno having deptno="30";
+
++----------+
+| max(sal) |
++----------+
+|  2850.00 |
++----------+
+
+-- 大于最高薪资就好了
+select e.ename,e.sal,d.dname
+from emp e
+join dept d
+on d.deptno = e.deptno
+where d.deptno <>'30' and e.sal>(select max(sal) from emp group by deptno having deptno="30");
+
++-------+---------+------------+
+| ename | sal     | dname      |
++-------+---------+------------+
+| JONES | 2975.00 | RESEARCH   |
+| SCOTT | 3000.00 | RESEARCH   |
+| KING  | 5000.00 | ACCOUNTING |
+| FORD  | 3000.00 | RESEARCH   |
++-------+---------+------------+
+```
+
+> 小Tips: 不等于可以写成 `<>`
+
+### 26、列出在每个部门工作的员工数量,平均工资和平均服务期限
+
+```sql
+select d.*,count(e.ename),avg(e.sal)
+from emp e
+right join dept d
+on e.deptno = d.deptno
+group by d.deptno,d.dname,d.loc;
+
++--------+------------+----------+----------------+-------------+
+| DEPTNO | DNAME      | LOC      | count(e.ename) | avg(e.sal)  |
++--------+------------+----------+----------------+-------------+
+|     10 | ACCOUNTING | NEW YORK |              3 | 2916.666667 |
+|     20 | RESEARCH   | DALLAS   |              5 | 2175.000000 |
+|     30 | SALES      | CHICAGO  |              6 | 1566.666667 |
+|     40 | OPERATIONS | BOSTON   |              0 |        NULL |
++--------+------------+----------+----------------+-------------+
+
+-- 为了不输出NULL,改一下
+select d.*,count(e.ename),ifnull(avg(e.sal),0)
+from emp e
+right join dept d
+on e.deptno = d.deptno
+group by d.deptno,d.dname,d.loc;
++--------+------------+----------+----------------+----------------------+
+| DEPTNO | DNAME      | LOC      | count(e.ename) | ifnull(avg(e.sal),0) |
++--------+------------+----------+----------------+----------------------+
+|     10 | ACCOUNTING | NEW YORK |              3 |          2916.666667 |
+|     20 | RESEARCH   | DALLAS   |              5 |          2175.000000 |
+|     30 | SALES      | CHICAGO  |              6 |          1566.666667 |
+|     40 | OPERATIONS | BOSTON   |              0 |             0.000000 |
++--------+------------+----------+----------------+----------------------+
+
+-- 服务期限
+select d.*,count(e.ename),ifnull(avg(e.sal),0),avg(timestampdiff(YEAR,hiredate,now()) ) as avgyear
+from emp e
+right join dept d
+on e.deptno = d.deptno
+group by d.deptno,d.dname,d.loc;
+
++--------+------------+----------+----------------+----------------------+---------+
+| DEPTNO | DNAME      | LOC      | count(e.ename) | ifnull(avg(e.sal),0) | avgyear |
++--------+------------+----------+----------------+----------------------+---------+
+|     10 | ACCOUNTING | NEW YORK |              3 |          2916.666667 | 39.3333 |
+|     20 | RESEARCH   | DALLAS   |              5 |          2175.000000 | 37.4000 |
+|     30 | SALES      | CHICAGO  |              6 |          1566.666667 | 39.8333 |
+|     40 | OPERATIONS | BOSTON   |              0 |             0.000000 |    NULL |
++--------+------------+----------+----------------+----------------------+---------+
+
+```
+
+> 小Tips:
+>
+> 1. 分组函数group，可以有多个字段共同分组。这样在select中就可以查询多个字段
+> 2. ifnull(,)这个函数可以把空值替换成想要的值。
+> 3. TimeStampDiff(间隔类型，前一个日期，后一个日期)
+
+### 27、列出所有员工的姓名、部门名称和工资 
+
+```sql
+select e.ename,d.dname,e.sal
+from emp e
+join dept d
+on e.deptno = d.deptno
+order by d.dname;
+
++--------+------------+---------+
+| ename  | dname      | sal     |
++--------+------------+---------+
+| CLARK  | ACCOUNTING | 2450.00 |
+| MILLER | ACCOUNTING | 1300.00 |
+| KING   | ACCOUNTING | 5000.00 |
+| FORD   | RESEARCH   | 3000.00 |
+| SMITH  | RESEARCH   |  800.00 |
+| SCOTT  | RESEARCH   | 3000.00 |
+| JONES  | RESEARCH   | 2975.00 |
+| ADAMS  | RESEARCH   | 1100.00 |
+| BLAKE  | SALES      | 2850.00 |
+| ALLEN  | SALES      | 1600.00 |
+| WARD   | SALES      | 1250.00 |
+| TURNER | SALES      | 1500.00 |
+| MARTIN | SALES      | 1250.00 |
+| JAMES  | SALES      |  950.00 |
++--------+------------+---------+
+```
+
+### 28、列出所有部门的详细信息和人数 
+
+```sql
+select d.deptno,d.dname,d.loc,count(e.ename)
+from dept d
+left join emp e
+on e.deptno = d.deptno
+group by d.deptno,d.dname,d.loc;
+
++--------+------------+----------+----------------+
+| deptno | dname      | loc      | count(e.ename) |
++--------+------------+----------+----------------+
+|     10 | ACCOUNTING | NEW YORK |              3 |
+|     20 | RESEARCH   | DALLAS   |              5 |
+|     30 | SALES      | CHICAGO  |              6 |
+|     40 | OPERATIONS | BOSTON   |              0 |
++--------+------------+----------+----------------+
+```
+
+> 小Tips: 在查询部门的数量的时候，一定要使用left join。因为只有dept表中使用了编号为40的部门，而emp表中没有。如果使用join是内连接（交集），就会丢失一个deptno=40的值。这里使用左外连接，leftjoin,取dept表的全集。
+
+### 29、列出各种工作的最低工资及从事此工作的雇员姓名
+
+```sql
+-- 求出工作的最低工资
+select job,min(sal) as minsal
+from emp
+group by job;
+
++-----------+---------+
+| job       | minsal  |
++-----------+---------+
+| ANALYST   | 3000.00 |
+| CLERK     |  800.00 |
+| MANAGER   | 2450.00 |
+| PRESIDENT | 5000.00 |
+| SALESMAN  | 1250.00 |
++-----------+---------+
+
+-- emp与上表连接
+select e.ename,t.*
+from emp e
+join (select job,min(sal) as minsal
+from emp
+group by job)t
+on e.job = t.job and e.sal = t.minsal;
++--------+-----------+---------+
+| ename  | job       | minsal  |
++--------+-----------+---------+
+| SMITH  | CLERK     |  800.00 |
+| WARD   | SALESMAN  | 1250.00 |
+| MARTIN | SALESMAN  | 1250.00 |
+| CLARK  | MANAGER   | 2450.00 |
+| SCOTT  | ANALYST   | 3000.00 |
+| KING   | PRESIDENT | 5000.00 |
+| FORD   | ANALYST   | 3000.00 |
++--------+-----------+---------+
+```
+
+### 30、列出各个部门的MANAGER(领导)的最低薪金
+
+真坑啊，这里的MANAGER指的是工作岗位。。。
+
+```sql
+select deptno,min(sal)
+from emp
+where job = 'MANAGER'
+group by deptno;
+
++--------+----------+
+| deptno | min(sal) |
++--------+----------+
+|     10 |  2450.00 |
+|     20 |  2975.00 |
+|     30 |  2850.00 |
++--------+----------+
+```
+
+### 31、列出所有员工的年工资,按年薪从低到高排序 
+
+```sql
+select ename,(sal+ifnull(comm,0))*12 as yearsal
+from emp
+order by yearsal asc;
+
++--------+----------+
+| ename  | yearsal  |
++--------+----------+
+| SMITH  |  9600.00 |
+| JAMES  | 11400.00 |
+| ADAMS  | 13200.00 |
+| MILLER | 15600.00 |
+| TURNER | 18000.00 |
+| WARD   | 21000.00 |
+| ALLEN  | 22800.00 |
+| CLARK  | 29400.00 |
+| MARTIN | 31800.00 |
+| BLAKE  | 34200.00 |
+| JONES  | 35700.00 |
+| SCOTT  | 36000.00 |
+| FORD   | 36000.00 |
+| KING   | 60000.00 |
++--------+----------+
+```
+
+### 32、求出员工领导的薪水超过3000的员工名称与领导名称
+
+```sql
+select a.ename as 'ename',b.ename as 'boss'
+from emp a
+join emp b
+on a.mgr = b.empno
+where b.sal>3000;
++-------+------+
+| ename | boss |
++-------+------+
+| JONES | KING |
+| BLAKE | KING |
+| CLARK | KING |
++-------+------+
+
+```
+
+### 33、求出部门名称中,带'S'字符的部门员工的工资合计、部门人数 
+
+```sql
+select d.deptno,d.ename,d.loc,count(e.ename),ifnull(sum(e.sal),0)
+from emp e
+right join dept d
+on e.deptno = d.deptno
+where d.dname like '%S%'
+group by d.deptno,d.dname,d.loc;
+
++--------+------------+---------+----------------+----------------------+
+| deptno | dname      | loc     | count(e.ename) | ifnull(sum(e.sal),0) |
++--------+------------+---------+----------------+----------------------+
+|     20 | RESEARCH   | DALLAS  |              5 |             10875.00 |
+|     30 | SALES      | CHICAGO |              6 |              9400.00 |
+|     40 | OPERATIONS | BOSTON  |              0 |                 0.00 |
++--------+------------+---------+----------------+----------------------+
+```
+
+### 34、给任职日期超过30年的员工加薪10% 
+
+```sql
+update emp set sal = sal*1.1 where timestampdiff(YEAR,hiredate,now());
+```
+
+`Rows matched: 14  Changed: 14  Warnings: 0`
 
 

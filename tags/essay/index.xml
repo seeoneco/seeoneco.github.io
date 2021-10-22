@@ -4,14 +4,7 @@
         <link>http://example.org/tags/essay/</link>
         <description>essay - 标签 - Lone&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chonee@qq.com (Lone)</managingEditor>
-            <webMaster>chonee@qq.com (Lone)</webMaster><lastBuildDate>Sun, 29 Aug 2021 01:20:05 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/essay/" rel="self" type="application/rss+xml" /><item>
-    <title>实习总结</title>
-    <link>http://example.org/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
-    <pubDate>Sun, 29 Aug 2021 01:20:05 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
-    <description><![CDATA[Ⅰ · 序 从兴奋到焦虑，到复杂，到麻木，到迷茫，纷至沓来。 业务需求逻辑看不懂，后端框架接口流程不熟悉，SQL写不好，VUE组件传值不明白，在隔壁]]></description>
-</item><item>
+            <webMaster>chonee@qq.com (Lone)</webMaster><lastBuildDate>Thu, 08 Jul 2021 08:42:28 &#43;0800</lastBuildDate><atom:link href="http://example.org/tags/essay/" rel="self" type="application/rss+xml" /><item>
     <title>碎碎念</title>
     <link>http://example.org/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
     <pubDate>Thu, 08 Jul 2021 08:42:28 &#43;0800</pubDate>
