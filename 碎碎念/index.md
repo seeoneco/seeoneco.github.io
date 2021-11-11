@@ -212,3 +212,8 @@
 
 对了，今天是万圣节，节日快乐！
 
+### :(fas fa-fire-alt): 11.8
+星期一 · 晴
+{{< figure src="https://gitee.com/lonercci/picbed/raw/master/img/202111111918722.jpg" title="下午5点37分的落霞与夜色" >}}
+### :(fas fa-fire-alt): 11.11
+
