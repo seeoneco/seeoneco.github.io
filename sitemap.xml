@@ -2,13 +2,13 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://example.org/34%E9%81%93mysql%E7%BB%83%E4%B9%A0%E9%A2%98/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/categories/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/tags/mysql/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/posts/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/tags/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
-            <loc>http://example.org/categories/%E7%AC%94%E8%AE%B0/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
+            <loc>http://example.org/34%E9%81%93mysql%E7%BB%83%E4%B9%A0%E9%A2%98/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/categories/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/tags/mysql/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/posts/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/tags/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
+            <loc>http://example.org/categories/%E7%AC%94%E8%AE%B0/</loc><lastmod>2021-10-17T08:42:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url><url>
             <loc>http://example.org/tags/java/</loc><lastmod>2021-09-26T15:42:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/categories/java/</loc><lastmod>2021-09-26T15:42:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://example.org/tags/note/</loc><lastmod>2021-09-26T15:42:20&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

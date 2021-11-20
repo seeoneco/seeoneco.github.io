@@ -216,8 +216,14 @@
 ### :(fas fa-fire-alt): 11.8
 星期一 · 晴
 {{< figure src="https://gitee.com/lonercci/picbed/raw/master/img/202111111918722.jpg" title="下午5点37分的落霞与夜色 -- 金星合月" >}}
-在图书馆瞥见窗外一点点细碎的金黄穿透了窗帘的缝隙。啊，是夕阳。
-低头看了眼时间，4点50。急忙收拾好东西回宿舍拍一会夕阳。
-没想到冬季的夕阳来的早，去的也快。等我匆匆打完饭饭来到楼道尽头的窗户，太阳基本都落山了，难掩失望的回宿舍吃饭。
-### :(fas fa-fire-alt): 11.11
+
+### :(fas fa-fire-alt): 11.10
+
+跟室友一起拍的毕业照，还有两个不是一个专业的，所以没有一起拍。
+
+{{< figure src="https://gitee.com/lonercci/picbed/raw/master/img/202111202316820.jpg" title="一起拍的毕业照，毕业啦~" >}}
+
+时间过得真快啊，一下子就过去了好多年。
+
+### :(fas fa-fire-alt): 11.20
 
