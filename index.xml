@@ -14,6 +14,13 @@
     <guid>http://example.org/%E5%9C%A8linux%E4%B8%8A%E9%83%A8%E7%BD%B2unlock-netease-cloud-music%E5%AE%9E%E7%8E%B0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E8%A7%A3%E7%81%B0/</guid>
     <description><![CDATA[关于 最近发现很多好听的歌曲网易云没有版权。 以前在超哥的服务器上部署过，后来不知道为什么失效了，正好现在自己的服务器闲置。 由于开发者在 Github 上Li]]></description>
 </item><item>
+    <title>一些总结</title>
+    <link>http://example.org/%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Mon, 24 Jan 2022 21:34:29 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[本文旨在记录一些工作中常用的Java知识点，进行汇总，记录。 关于Java的并行流和Lambda表达式在循环中的利用（Java8新特性） 假设一]]></description>
+</item><item>
     <title>2021，再见</title>
     <link>http://example.org/2021%E5%86%8D%E8%A7%81/</link>
     <pubDate>Fri, 31 Dec 2021 23:16:39 &#43;0800</pubDate>
@@ -69,12 +76,5 @@
     <author>作者</author>
     <guid>http://example.org/json%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
     <description><![CDATA[json库的使用 JSON与字典的转换 dumps( )方法 ==&gt; 将字典转化为 json字符串 loads( )方法 ==&gt; 将json字符串转为字典 json与python中的字典颇为]]></description>
-</item><item>
-    <title>不念过往，不畏将来 (转载)</title>
-    <link>http://example.org/%E4%B8%8D%E5%BF%B5%E8%BF%87%E5%BE%80%E4%B8%8D%E7%95%8F%E5%B0%86%E6%9D%A5/</link>
-    <pubDate>Wed, 30 Jun 2021 10:33:57 &#43;0800</pubDate>
-    <author>作者</author>
-    <guid>http://example.org/%E4%B8%8D%E5%BF%B5%E8%BF%87%E5%BE%80%E4%B8%8D%E7%95%8F%E5%B0%86%E6%9D%A5/</guid>
-    <description><![CDATA[仿佛从来没有这么热的夏天。 只是在房间里静静地坐着，都能感觉到从四周不断涌来的热浪，电风扇在不知疲倦地转着，却仍然没有带来一点凉意。 而这个时候]]></description>
 </item></channel>
 </rss>
