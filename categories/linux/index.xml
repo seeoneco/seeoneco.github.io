@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Linux - 分类 - Lone&#39;s Blog</title>
+        <link>http://example.org/categories/linux/</link>
+        <description>Linux - 分类 - Lone&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chonee@qq.com (Lone)</managingEditor>
+            <webMaster>chonee@qq.com (Lone)</webMaster><lastBuildDate>Thu, 03 Feb 2022 22:47:28 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/linux/" rel="self" type="application/rss+xml" /><item>
+    <title>在Linux上部署Unlock-netease-cloud-music实现网易云音乐解灰</title>
+    <link>http://example.org/%E5%9C%A8linux%E4%B8%8A%E9%83%A8%E7%BD%B2unlock-netease-cloud-music%E5%AE%9E%E7%8E%B0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E8%A7%A3%E7%81%B0/</link>
+    <pubDate>Thu, 03 Feb 2022 22:47:28 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/%E5%9C%A8linux%E4%B8%8A%E9%83%A8%E7%BD%B2unlock-netease-cloud-music%E5%AE%9E%E7%8E%B0%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E8%A7%A3%E7%81%B0/</guid>
+    <description><![CDATA[关于 最近发现很多好听的歌曲网易云没有版权。 以前在超哥的服务器上部署过，后来不知道为什么失效了，正好现在自己的服务器闲置。 由于开发者在 Github 上Li]]></description>
+</item></channel>
+</rss>

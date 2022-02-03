@@ -4,7 +4,14 @@
         <link>http://example.org/categories/%E9%9A%8F%E7%AC%94/</link>
         <description>随笔 - 分类 - Lone&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>chonee@qq.com (Lone)</managingEditor>
-            <webMaster>chonee@qq.com (Lone)</webMaster><lastBuildDate>Thu, 08 Jul 2021 08:42:28 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E9%9A%8F%E7%AC%94/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>chonee@qq.com (Lone)</webMaster><lastBuildDate>Fri, 31 Dec 2021 23:16:39 &#43;0800</lastBuildDate><atom:link href="http://example.org/categories/%E9%9A%8F%E7%AC%94/" rel="self" type="application/rss+xml" /><item>
+    <title>2021,再见</title>
+    <link>http://example.org/2021%E5%86%8D%E8%A7%81/</link>
+    <pubDate>Fri, 31 Dec 2021 23:16:39 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>http://example.org/2021%E5%86%8D%E8%A7%81/</guid>
+    <description><![CDATA[坐着80路公交车，从公司匆匆赶往学校。学校较为偏远，窗外很久都是漆黑，只有零星的几盏灯火，车内灯光很暗，摇摇晃晃，不少情侣相互依偎着昏昏欲睡]]></description>
+</item><item>
     <title>碎碎念</title>
     <link>http://example.org/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
     <pubDate>Thu, 08 Jul 2021 08:42:28 &#43;0800</pubDate>
